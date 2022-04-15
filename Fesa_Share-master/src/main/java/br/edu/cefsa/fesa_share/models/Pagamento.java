@@ -16,7 +16,16 @@ public class Pagamento implements Serializable{
     public Pagamento() {
     }
 
-    public Pagamento(int codigo, String descricao, Float preco, int parcelas, LocalDateTime diaPagamento) {
+    public Pagamento(int codigo, Pedido pedido, String descricao, Float preco, int parcelas, String diaPagamento) {
+        this.codigo = codigo;
+        this.pedido = pedido;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.parcelas = parcelas;
+        this.diaPagamento = diaPagamento;
+    }
+    
+        public Pagamento(int codigo, int pedidoID, String descricao, Float preco, int parcelas, String diaPagamento) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.preco = preco;
@@ -30,13 +39,13 @@ public class Pagamento implements Serializable{
     private Float preco;
     private int parcelas;
     private Pedido pedido = new Pedido();
-    private LocalDateTime diaPagamento;
+    private String diaPagamento;
 
-    public LocalDateTime getDiaPagamento() {
+    public String getDiaPagamento() {
         return diaPagamento;
     }
 
-    public void setDiaPagamento(LocalDateTime diaPagamento) {
+    public void setDiaPagamento(String diaPagamento) {
         this.diaPagamento = diaPagamento;
     }
     

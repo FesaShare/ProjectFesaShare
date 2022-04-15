@@ -21,16 +21,24 @@ public class Pedido implements Serializable{
     private Usuario locatario = new Usuario();        
     private Pagamento pagamento;
     private Float precoAluguel;
-    private LocalDateTime dataPedido;
+    private String dataPedido;
     private Fila fila = new Fila();
 
-    public Pedido(int codigo, int solicitacaoID, Produto produto, Pagamento pagamento, Float precoAluguel, LocalDateTime dataPedido) {
+    public Pedido(int codigo, int solicitacaoID, Produto produto, Pagamento pagamento, Float precoAluguel, String dataPedido) {
         this.codigo = codigo;
         this.solicitacaoID = solicitacaoID;
         this.produto = produto;
         this.pagamento = pagamento;
         this.precoAluguel = precoAluguel;
         this.dataPedido = dataPedido;
+    }
+
+    Pedido() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Pedido(int codigo, int produtoID, int locatarioID, int locadorID, int pagamentoID, float preco, String data_pedido, String data_devolucao) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getCodigo() {
@@ -97,11 +105,11 @@ public class Pedido implements Serializable{
         this.precoAluguel = precoAluguel;
     }
 
-    public LocalDateTime getDataPedido() {
+    public String getDataPedido() {
         return dataPedido;
     }
 
-    public void setDataPedido(LocalDateTime dataPedido) {
+    public void setDataPedido(String dataPedido) {
         this.dataPedido = dataPedido;
     }
 

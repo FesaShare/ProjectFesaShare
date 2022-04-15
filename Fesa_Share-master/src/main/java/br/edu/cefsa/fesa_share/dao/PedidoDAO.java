@@ -34,7 +34,8 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
                 pedidos.add(new Pedido(result.getInt("PedidoID"), 
                                             result.getInt("ProdutoID"),
                                             result.getInt("LocatarioID"),
-                                            result.getInt("LocatadorID"),
+                                            result.getInt("LocadorID"),
+                                            result.getInt("PagamentoID"),
                                             result.getFloat("Preco"),
                                             result.getString("data_pedido"),
                                             result.getString("data_devolucao")));
@@ -67,7 +68,7 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
             pStatement.setInt(3, e.getLocatario().getCodigo());
             pStatement.setInt(4, e.getLocador().getCodigo());
             pStatement.setInt(5, e.getPagamento().getCodigo());
-            pStatement.setFloat(6, e.getPreco());
+            pStatement.setFloat(6, e.getPrecoAluguel());
             
             //-------------Inserir para datas---------------------//
             
@@ -99,7 +100,7 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setFloat(1, e.getPreco());
+            pStatement.setFloat(1, e.getPrecoAluguel());
             pStatement.setInt(2, e.getCodigo());
             pStatement.execute();
         } catch (ClassNotFoundException ex) {
@@ -154,7 +155,7 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
             if (result.next()) {
 
                 e.setCodigo(result.getInt("PedidoID"));
-                e.setPreco(result.getFloat("Preco"));
+                e.setPrecoAluguel(result.getFloat("Preco"));
             //-------------Inserir para datas---------------------//
             }
         } catch (ClassNotFoundException ex) {

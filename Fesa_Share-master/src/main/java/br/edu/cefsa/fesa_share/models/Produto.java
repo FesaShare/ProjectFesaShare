@@ -24,6 +24,10 @@ public class Produto implements Serializable{
         this.detalhes = detalhes;
         this.tempoUso = tempoUso;
     }
+    
+        public Produto(int codigo, int usuarioID, int categoriaID, Float precoTotal, Float precoAluguel, String condicao, String descricao, String aluguelStatus, String imagemID, String detalhes, String tempoUso ) {
+
+    }
 
     private int codigo;
     private String descricao;

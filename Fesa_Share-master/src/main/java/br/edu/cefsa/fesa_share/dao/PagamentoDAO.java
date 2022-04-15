@@ -31,7 +31,12 @@ public class PagamentoDAO implements GenericoDAO<Pagamento>{
             PreparedStatement pStatement = connection.prepareStatement(sql);
             ResultSet result = pStatement.executeQuery();
             while (result.next()) {
-                pagamentos.add(new Pagamento(result.getInt("PagamentoID"), result.getString("Descricao"), result.getFloat("Preco"), result.getInt("Parcelas")));
+                pagamentos.add(new Pagamento(result.getInt("PagamentoID"),
+                                                result.getInt("PedidoID"),
+                                                result.getString("Descricao"), 
+                                                result.getFloat("Preco"), 
+                                                result.getInt("Parcelas"),
+                                                result.getString("DiaPagamento")));
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PagamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,6 +65,7 @@ public class PagamentoDAO implements GenericoDAO<Pagamento>{
             pStatement.setString(2, e.getDescricao());
             pStatement.setFloat(3, e.getPreco());
             pStatement.setInt(4, e.getParcelas());
+            pStatement.setString(5, e.getDiaPagamento());
             pStatement.execute();
             inserido = true;
         } catch (ClassNotFoundException ex) {

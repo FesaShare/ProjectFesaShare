@@ -79,7 +79,7 @@ public class CategoriaDAO implements GenericoDAO<Categoria>{
 
     @Override
     public void alterar(Categoria e) throws PersistenciaException {
-         String sql = "UPDATE FESASHARE.DBO.CATEGORIA SET NOME=? WHERE ID_CARGO = ?";
+         String sql = "UPDATE FESASHARE.DBO.CATEGORIA SET Descricao=? WHERE CategoriaID = ?";
 
         Connection connection = null;
         try {
@@ -105,7 +105,7 @@ public class CategoriaDAO implements GenericoDAO<Categoria>{
 
     @Override
     public void remover(Categoria e) throws PersistenciaException {
-        String sql = "DELETE FROM FESASHARE.DBO.CATEGORIA WHERE ID_CARGO = ?";
+        String sql = "DELETE FROM FESASHARE.DBO.CATEGORIA WHERE CategoriaID = ?";
 
         Connection connection = null;
         try {

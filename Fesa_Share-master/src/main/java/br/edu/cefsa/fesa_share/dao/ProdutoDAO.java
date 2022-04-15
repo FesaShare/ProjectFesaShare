@@ -31,7 +31,7 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
             PreparedStatement pStatement = connection.prepareStatement(sql);
             ResultSet result = pStatement.executeQuery();
             while (result.next()) {
-                pedidos.add(new Produto(result.getInt("PedidoID"), 
+                pedidos.add(new Produto(result.getInt("ProdutoID"), 
                                             result.getInt("UsuarioID"),
                                             result.getInt("CategoriaID"),
                                             result.getFloat("Preco_total"),
