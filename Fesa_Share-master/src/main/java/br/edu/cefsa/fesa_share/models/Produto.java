@@ -15,22 +15,58 @@ public class Produto implements Serializable{
     public Produto() {
     }
 
-    public Produto(int codigo, String descricao, String consicao, String aluguel) {
+    public Produto(int codigo, String descricao, String condicao, String aluguelStatus, Float precoTotal, String detalhes, int tempoUso) {
         this.codigo = codigo;
         this.descricao = descricao;
-        this.consicao = consicao;
-        this.aluguel = aluguel;
+        this.condicao = condicao;
+        this.aluguelStatus = aluguelStatus;
+        this.precoTotal = precoTotal;
+        this.detalhes = detalhes;
+        this.tempoUso = tempoUso;
     }
-    
+
     private int codigo;
     private String descricao;
-    private String consicao;
-    private String aluguel; //ALUGADO, DISPONIVEL, EM TRANSAÇÃO
+    private String condicao;
+    private String aluguelStatus; //ALUGADO, DISPONIVEL, EM TRANSAÇÃO
+    private Float precoTotal;
+    private String detalhes;
+    private int tempoUso;
     private Usuario usuario = new Usuario();
     private Categoria categoria = new Categoria();
 
-    public Produto(int aInt, int aInt0, int aInt1, float aFloat, float aFloat0, String string, String string0, String string1, String string2, String string3, String string4) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+
+    public String getCondicao() {
+        return condicao;
+    }
+
+    public void setCondicao(String condicao) {
+        this.condicao = condicao;
+    }
+
+    public String getAluguelStatus() {
+        return aluguelStatus;
+    }
+
+    public void setAluguelStatus(String aluguelStatus) {
+        this.aluguelStatus = aluguelStatus;
+    }
+
+    public String getDetalhes() {
+        return detalhes;
+    }
+
+    public void setDetalhes(String detalhes) {
+        this.detalhes = detalhes;
+    }
+
+    public int getTempoUso() {
+        return tempoUso;
+    }
+
+    public void setTempoUso(int tempoUso) {
+        this.tempoUso = tempoUso;
     }
 
     public int getCodigo() {
@@ -50,19 +86,19 @@ public class Produto implements Serializable{
     }
 
     public String getConsicao() {
-        return consicao;
+        return condicao;
     }
 
     public void setConsicao(String consicao) {
-        this.consicao = consicao;
+        this.condicao = consicao;
     }
 
     public String getAluguel() {
-        return aluguel;
+        return aluguelStatus;
     }
 
     public void setAluguel(String aluguel) {
-        this.aluguel = aluguel;
+        this.aluguelStatus = aluguel;
     }
 
     public Usuario getUsuario() {
@@ -81,6 +117,19 @@ public class Produto implements Serializable{
         this.categoria = categoria;
     }
 
-    
-}
+    public Float getPrecoTotal() {
+        return precoTotal;
+    }
 
+    public void setPrecoTotal(Float precoTotal) {
+        this.precoTotal = precoTotal;
+    }
+
+    public Float depreciacao(Float precoTotal, int tempoUso){
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public void mudaStatusProduto(){
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+}

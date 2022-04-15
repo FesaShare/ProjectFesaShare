@@ -5,31 +5,32 @@
 package br.edu.cefsa.fesa_share.models;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  *
  * @author USUARIO
  */
 public class Pedido implements Serializable{
-
-    public Pedido() {
-    }
-
-    public Pedido(int codigo, Float preco, Pagamento pagamento) {
-        this.codigo = codigo;
-        this.preco = preco;
-        this.pagamento = pagamento;
-    }
     
     private int codigo;
-    private Float preco;
-    private Produto produto = new Produto();
+    private int solicitacaoID;
+    private Chat chat = new Chat();
+    private Produto produto;
     private Usuario locador = new Usuario();
     private Usuario locatario = new Usuario();        
     private Pagamento pagamento;
+    private Float precoAluguel;
+    private LocalDateTime dataPedido;
+    private Fila fila = new Fila();
 
-    public Pedido(int aInt, int aInt0, int aInt1, int aInt2, float aFloat, String string, String string0) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Pedido(int codigo, int solicitacaoID, Produto produto, Pagamento pagamento, Float precoAluguel, LocalDateTime dataPedido) {
+        this.codigo = codigo;
+        this.solicitacaoID = solicitacaoID;
+        this.produto = produto;
+        this.pagamento = pagamento;
+        this.precoAluguel = precoAluguel;
+        this.dataPedido = dataPedido;
     }
 
     public int getCodigo() {
@@ -40,12 +41,20 @@ public class Pedido implements Serializable{
         this.codigo = codigo;
     }
 
-    public Float getPreco() {
-        return preco;
+    public int getSolicitacaoID() {
+        return solicitacaoID;
     }
 
-    public void setPreco(Float preco) {
-        this.preco = preco;
+    public void setSolicitacaoID(int solicitacaoID) {
+        this.solicitacaoID = solicitacaoID;
+    }
+
+    public Chat getChat() {
+        return chat;
+    }
+
+    public void setChat(Chat chat) {
+        this.chat = chat;
     }
 
     public Produto getProduto() {
@@ -79,6 +88,31 @@ public class Pedido implements Serializable{
     public void setPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
     }
+
+    public Float getPrecoAluguel() {
+        return precoAluguel;
+    }
+
+    public void setPrecoAluguel(Float precoAluguel) {
+        this.precoAluguel = precoAluguel;
+    }
+
+    public LocalDateTime getDataPedido() {
+        return dataPedido;
+    }
+
+    public void setDataPedido(LocalDateTime dataPedido) {
+        this.dataPedido = dataPedido;
+    }
+
+    public Fila getFila() {
+        return fila;
+    }
+
+    public void setFila(Fila fila) {
+        this.fila = fila;
+    }
+
     
     
 }

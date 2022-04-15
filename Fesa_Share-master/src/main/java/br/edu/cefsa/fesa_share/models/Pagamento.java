@@ -5,6 +5,7 @@
 package br.edu.cefsa.fesa_share.models;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -15,23 +16,30 @@ public class Pagamento implements Serializable{
     public Pagamento() {
     }
 
-    public Pagamento(int codigo, String descricao, Float preco, int parcelas) {
+    public Pagamento(int codigo, String descricao, Float preco, int parcelas, LocalDateTime diaPagamento) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.preco = preco;
         this.parcelas = parcelas;
+        this.diaPagamento = diaPagamento;
     }
+    
     
     private int codigo;
     private String descricao;
     private Float preco;
     private int parcelas;
     private Pedido pedido = new Pedido();
+    private LocalDateTime diaPagamento;
 
-    public Pagamento(int aInt, String string) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public LocalDateTime getDiaPagamento() {
+        return diaPagamento;
     }
 
+    public void setDiaPagamento(LocalDateTime diaPagamento) {
+        this.diaPagamento = diaPagamento;
+    }
+    
     public int getCodigo() {
         return codigo;
     }

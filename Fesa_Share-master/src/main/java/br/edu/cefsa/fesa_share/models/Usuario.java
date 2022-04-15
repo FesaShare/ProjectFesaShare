@@ -15,8 +15,9 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(int codigo, Reputacao reputacao, String senha, String email, String telefone, String endereco) {
+    public Usuario(int codigo, String nome, Reputacao reputacao, String senha, String email, String telefone, String endereco) {
         this.codigo = codigo;
+        this.nome = nome;
         this.reputacao = reputacao;
         this.senha = senha;
         this.email = email;
@@ -24,13 +25,24 @@ public class Usuario implements Serializable {
         this.endereco = endereco;
     }
 
+
     private int codigo;
+    private String nome;
     private Reputacao reputacao;
     private String senha;
     private String email;
     private String telefone;
     private String endereco;
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    
     public int getCodigo() {
         return codigo;
     }
