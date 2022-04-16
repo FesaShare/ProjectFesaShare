@@ -44,11 +44,11 @@ public class SqlServer {
         String portNumber = "1433";
         String userName   = this.user;
         String passName   = this.pass;
-        url = "jdbc:sqlserver://"+ this.host+":" +portNumber + ";databaseName=" +this.database;
+        url = "jdbc:sqlserver://fesashare354.database.windows.net:1433;database=FesaShare;user=fesa_admin@fesashare354;password={F3$4_2022};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
        
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
-            this.c = DriverManager.getConnection(url,userName, passName);
+            this.c = DriverManager.getConnection(url);
             isConnected = true;
         } catch( SQLException e ) {
             e.printStackTrace();

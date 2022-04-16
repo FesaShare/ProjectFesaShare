@@ -5,6 +5,9 @@
 
 package br.edu.cefsa.fesa_share.principal;
 
+import br.edu.cefsa.fesa_share.dao.CategoriaDAO;
+import br.edu.cefsa.fesa_share.exception.PersistenciaException;
+import br.edu.cefsa.fesa_share.models.Categoria;
 import br.edu.cefsa.fesa_view.PaginaPrincipal;
 import javax.swing.JFrame;
 
@@ -14,11 +17,18 @@ import javax.swing.JFrame;
  */
 public class Fesa_Share {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PersistenciaException {
         System.out.println("Hello World!");
+        Categoria categoria = new Categoria();
+        categoria.setCodigo(2);
+        categoria.setDescricao("Eletronicos");
         
-         PaginaPrincipal pgPrincipal = new PaginaPrincipal();
-         pgPrincipal.setVisible(true);
+        CategoriaDAO catDao = new CategoriaDAO();
+        catDao.inserir(categoria);
+        
+        
+        /* PaginaPrincipal pgPrincipal = new PaginaPrincipal();
+         pgPrincipal.setVisible(true);*/
 
     }
     
