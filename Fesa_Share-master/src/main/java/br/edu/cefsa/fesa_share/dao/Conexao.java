@@ -22,16 +22,16 @@ public class Conexao {
 
     //private final ResourceBundle BUNDLE = ResourceBundle.getBundle("derb", new Locale("pt", "BR"));
     private static Conexao conexao;
-<<<<<<< HEAD
+
     String url = "jdbc:sqlserver://fesashare354.database.windows.net:1433;databaseName=FesaShare;"
                     + "user=fesa_admin;"
                     + "password=F3$4_2022;";
-=======
-    String url = "jdbc:sqlserver://fesashare354.database.windows.net:1433;database=FesaShare;user=fesa_admin@fesashare354;password={F3$4_2022};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-    String portNumber = "1433";
-    String userName = "fesa_admin";
-    String passName = "F3$4_2022";
->>>>>>> 7f2e1294fa2d2f823be28942ed87f2d93348f8e4
+
+    //String url = "jdbc:sqlserver://fesashare354.database.windows.net:1433;database=FesaShare;user=fesa_admin@fesashare354;password={F3$4_2022};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+    //String portNumber = "1433";
+    //String userName = "fesa_admin";
+    //String passName = "F3$4_2022";
+
         
     private Conexao() {
     }
@@ -45,11 +45,11 @@ public class Conexao {
 
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-<<<<<<< HEAD
+
         //Connection connection = DriverManager.getConnection(BUNDLE.getString("url"), BUNDLE.getString("usuario"), BUNDLE.getString("senha"));*/
-=======
+
         /*Connection connection = DriverManager.getConnection(BUNDLE.getString("url"), BUNDLE.getString("usuario"), BUNDLE.getString("senha"));*/
->>>>>>> 7f2e1294fa2d2f823be28942ed87f2d93348f8e4
+
         Connection connection = DriverManager.getConnection(url);
         return connection;
     }
