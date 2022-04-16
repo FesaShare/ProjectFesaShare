@@ -10,4 +10,12 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>br.edu.cefsa.fesa_share.principal.Fesa_Share</exec.mainClass>
     </properties>
+       <dependencies>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>6.4.0.jre8</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
 </project>

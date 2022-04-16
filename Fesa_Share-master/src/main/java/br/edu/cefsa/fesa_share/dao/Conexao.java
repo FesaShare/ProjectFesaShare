@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package br.edu.cefsa.fesa_share.dao;
 
 import java.sql.Connection;
@@ -13,18 +10,21 @@ import java.sql.Statement;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+
 /**
  *
  * @author USUARIO
  */
 public class Conexao {
+    
+    SQLServerDataSource sqlDs = new SQLServerDataSource();
 
-    /*private final ResourceBundle BUNDLE = ResourceBundle.getBundle("derb", new Locale("pt", "BR"));*/
+    //private final ResourceBundle BUNDLE = ResourceBundle.getBundle("derb", new Locale("pt", "BR"));
     private static Conexao conexao;
-    String url = "jdbc:sqlserver://fesashare354.database.windows.net:1433;databaseName=FesaShare";
-    String portNumber = "1433";
-    String userName = "fesa_admin";
-    String passName = "F3$4_2022";
+    String url = "jdbc:sqlserver://fesashare354.database.windows.net:1433;databaseName=FesaShare;"
+                    + "user=fesa_admin;"
+                    + "password=F3$4_2022;";
         
     private Conexao() {
     }
@@ -39,7 +39,7 @@ public class Conexao {
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         //Connection connection = DriverManager.getConnection(BUNDLE.getString("url"), BUNDLE.getString("usuario"), BUNDLE.getString("senha"));*/
-        Connection connection = DriverManager.getConnection(url,userName, passName);
+        Connection connection = DriverManager.getConnection(url);
         return connection;
     }
     
