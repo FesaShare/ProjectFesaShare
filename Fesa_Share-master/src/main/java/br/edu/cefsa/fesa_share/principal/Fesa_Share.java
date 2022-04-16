@@ -27,8 +27,8 @@ public class Fesa_Share {
         catDao.inserir(categoria);
         
         
-        /* PaginaPrincipal pgPrincipal = new PaginaPrincipal();
-         pgPrincipal.setVisible(true);*/
+        PaginaPrincipal pgPrincipal = new PaginaPrincipal();
+        pgPrincipal.setVisible(true);
 
     }
     
