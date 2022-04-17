@@ -178,4 +178,115 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
         return e;
     }
     
+    public Produto listarPorCategoria(Produto e) throws PersistenciaException {
+        String sql = "SELECT * FROM FESASHARE.DBO.PRODUTOS WHERE CategoriaID = ?";
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setInt(1, e.getCodigo());
+            ResultSet result = pStatement.executeQuery();
+            if (result.next()) {
+
+                e.setCodigo(result.getInt("ProdutoID"));
+                e.setDescricao(result.getString("Descricao"));
+            //-------------Inserir para datas---------------------//
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return e;
+    }
+    
+    public Produto listarPorCondicao(Produto e) throws PersistenciaException {
+        String sql = "SELECT * FROM FESASHARE.DBO.PRODUTOS WHERE Condicao = ?";
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setInt(1, e.getCodigo());
+            ResultSet result = pStatement.executeQuery();
+            if (result.next()) {
+
+                e.setCodigo(result.getInt("ProdutoID"));
+                e.setDescricao(result.getString("Descricao"));
+            //-------------Inserir para datas---------------------//
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return e;
+    }
+    
+    public Produto listarPorStatus(Produto e) throws PersistenciaException {
+        String sql = "SELECT * FROM FESASHARE.DBO.PRODUTOS WHERE AluguelStatus = ?";
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setInt(1, e.getCodigo());
+            ResultSet result = pStatement.executeQuery();
+            if (result.next()) {
+
+                e.setCodigo(result.getInt("ProdutoID"));
+                e.setDescricao(result.getString("Descricao"));
+            //-------------Inserir para datas---------------------//
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return e;
+    }
+    
+    public Produto listarPorDescricao(Produto e) throws PersistenciaException {
+        String sql = "SELECT * FROM FESASHARE.DBO.PRODUTOS WHERE Descricao LIKE %?%";
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setInt(1, e.getCodigo());
+            ResultSet result = pStatement.executeQuery();
+            if (result.next()) {
+
+                e.setCodigo(result.getInt("ProdutoID"));
+                e.setDescricao(result.getString("Descricao"));
+            //-------------Inserir para datas---------------------//
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return e;
+    }
 }
