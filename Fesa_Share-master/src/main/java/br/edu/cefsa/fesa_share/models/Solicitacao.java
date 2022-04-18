@@ -15,19 +15,21 @@ public class Solicitacao implements Serializable{
     public Solicitacao() {
     }
 
-    public Solicitacao(int codigo, int qtdDias, Float valor) {
+    public Solicitacao(int codigo, int qtdDias, float valor) {
         this.codigo = codigo;
         this.qtdDias = qtdDias;
         this.valor = valor;
     }
     
+    public Solicitacao(int codigo, int qtdDias, float valor, int locadorID, int locatarioID) {
+    }
     
     public int codigo;
     public Produto produto = new Produto();
     public Usuario locador = new Usuario();
     public Usuario locatario = new Usuario();
     public int qtdDias;
-    public Float valor;
+    public float valor;
 
     public int getCodigo() {
         return codigo;
@@ -73,11 +75,11 @@ public class Solicitacao implements Serializable{
         return valor;
     }
 
-    public void setValor(Float valor) {
+    public void setValor(float valor) {
         this.valor = valor;
     }
     
-    public Float CalculaAluguel(Produto produto, Float precoTotal, int qtdDias){
+    public float CalculaAluguel(Produto produto, Float precoTotal, int qtdDias){
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

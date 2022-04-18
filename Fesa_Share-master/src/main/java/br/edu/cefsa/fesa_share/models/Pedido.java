@@ -34,7 +34,6 @@ public class Pedido implements Serializable{
     }
 
     Pedido() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public Pedido(int codigo, int produtoID, int locatarioID, int locadorID, int pagamentoID, float preco, String data_pedido, String data_devolucao) {

@@ -184,7 +184,7 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setInt(1, e.getCodigo());
+            pStatement.setInt(1, e.getCategoria().getCodigo());
             ResultSet result = pStatement.executeQuery();
             if (result.next()) {
 
@@ -212,7 +212,7 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setInt(1, e.getCodigo());
+            pStatement.setString(1, e.getCondicao());
             ResultSet result = pStatement.executeQuery();
             if (result.next()) {
 
@@ -240,7 +240,7 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setInt(1, e.getCodigo());
+            pStatement.setString(1, e.getAluguelStatus());
             ResultSet result = pStatement.executeQuery();
             if (result.next()) {
 
@@ -268,7 +268,7 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setInt(1, e.getCodigo());
+            pStatement.setString(1, e.getDescricao());
             ResultSet result = pStatement.executeQuery();
             if (result.next()) {
 

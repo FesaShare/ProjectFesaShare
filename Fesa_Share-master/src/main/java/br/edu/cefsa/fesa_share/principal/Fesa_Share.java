@@ -6,8 +6,10 @@
 package br.edu.cefsa.fesa_share.principal;
 
 import br.edu.cefsa.fesa_share.dao.CategoriaDAO;
+import br.edu.cefsa.fesa_share.dao.UsuarioDAO;
 import br.edu.cefsa.fesa_share.exception.PersistenciaException;
 import br.edu.cefsa.fesa_share.models.Categoria;
+import br.edu.cefsa.fesa_share.models.Usuario;
 import br.edu.cefsa.fesa_view.PaginaPrincipal;
 import javax.swing.JFrame;
 
@@ -19,12 +21,16 @@ public class Fesa_Share {
 
     public static void main(String[] args) throws PersistenciaException {
         System.out.println("Hello World!");
-        Categoria categoria = new Categoria();
-        categoria.setCodigo(2);
-        categoria.setDescricao("Eletronicos");
+        Usuario usuario = new Usuario();
+        usuario.setNome("Primeiro");
+        usuario.setSenha("1234");
+        usuario.setEmail("primeiro@teste.com");
+        usuario.setTelefone("(11)98765-4321");
+        usuario.setEndereco("Rua aleatorio, nº1");
+        usuario.setReputacao(null);
         
-        CategoriaDAO catDao = new CategoriaDAO();
-        catDao.inserir(categoria);
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarioDAO.inserir(usuario);
         
         
         PaginaPrincipal pgPrincipal = new PaginaPrincipal();

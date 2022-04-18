@@ -20,11 +20,19 @@ public class Chat implements Serializable{
         this.mensagem = mensagem;
     }
     
+    public Chat(int codigo, int pedidoID, int locadorID, int locatarioID, String mensagem) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
     private int codigo;
     private Pedido pedido = new Pedido();
     private Usuario locador = new Usuario();
     private Usuario locatario = new Usuario();
     private String mensagem;
+
+    public Chat(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
     public int getCodigo() {
         return codigo;
