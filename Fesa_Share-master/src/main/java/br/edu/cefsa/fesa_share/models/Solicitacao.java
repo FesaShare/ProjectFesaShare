@@ -15,22 +15,25 @@ public class Solicitacao implements Serializable{
     public Solicitacao() {
     }
 
-    public Solicitacao(int codigo, int qtdDias, float valor) {
-        this.codigo = codigo;
-        this.qtdDias = qtdDias;
-        this.valor = valor;
-    }
-    
     public Solicitacao(int codigo, int qtdDias, float valor, int locadorID, int locatarioID) {
     }
     
     public int codigo;
-    public Produto produto = new Produto();
-    public Usuario locador = new Usuario();
-    public Usuario locatario = new Usuario();
-    public int qtdDias;
-    public float valor;
+    public int ProdutoID;
+    public Usuario Locatario;
+    public Usuario Locador;
+    public int QuantidadeDias;
+    public float ValorAPagar;
 
+    public Solicitacao(int codigo, int ProdutoID, Usuario Locatario, Usuario Locador, int QuantidadeDias, float ValorAPagar) {
+        this.codigo = codigo;
+        this.ProdutoID = ProdutoID;
+        this.Locatario = Locatario;
+        this.Locador = Locador;
+        this.QuantidadeDias = QuantidadeDias;
+        this.ValorAPagar = ValorAPagar;
+    }
+    
     public int getCodigo() {
         return codigo;
     }
@@ -39,45 +42,46 @@ public class Solicitacao implements Serializable{
         this.codigo = codigo;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public int getProdutoID() {
+        return ProdutoID;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
-    public Usuario getLocador() {
-        return locador;
-    }
-
-    public void setLocador(Usuario locador) {
-        this.locador = locador;
+    public void setProdutoID(int ProdutoID) {
+        this.ProdutoID = ProdutoID;
     }
 
     public Usuario getLocatario() {
-        return locatario;
+        return Locatario;
     }
 
-    public void setLocatario(Usuario locatario) {
-        this.locatario = locatario;
+    public void setLocatario(Usuario Locatario) {
+        this.Locatario = Locatario;
     }
 
-    public int getQtdDias() {
-        return qtdDias;
+    public Usuario getLocador() {
+        return Locador;
     }
 
-    public void setQtdDias(int qtdDias) {
-        this.qtdDias = qtdDias;
+    public void setLocador(Usuario Locador) {
+        this.Locador = Locador;
     }
 
-    public Float getValor() {
-        return valor;
+    public int getQuantidadeDias() {
+        return QuantidadeDias;
     }
 
-    public void setValor(float valor) {
-        this.valor = valor;
+    public void setQuantidadeDias(int QuantidadeDias) {
+        this.QuantidadeDias = QuantidadeDias;
     }
+
+    public float getValorAPagar() {
+        return ValorAPagar;
+    }
+
+    public void setValorAPagar(float ValorAPagar) {
+        this.ValorAPagar = ValorAPagar;
+    }
+
     
     public float CalculaAluguel(Produto produto, Float precoTotal, int qtdDias){
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

@@ -23,6 +23,7 @@ public class SolicitacaoDAO implements GenericoDAO<Solicitacao> {
 
     @Override
     public List<Solicitacao> listar() throws PersistenciaException {
+        /*Parei na metade*/
         List<Solicitacao> solicitacao = new ArrayList();
         String sql = "SELECT * FROM FESASHARE.DBO.SOLICITACAO";
         Connection connection = null;
@@ -32,10 +33,12 @@ public class SolicitacaoDAO implements GenericoDAO<Solicitacao> {
             ResultSet result = pStatement.executeQuery();
             while (result.next()) {
                 solicitacao.add(new Solicitacao(result.getInt("SolicitacaoID"),
-                                                result.getInt("QuantidadeDias"),
-                                                result.getFloat("Valor"), 
+                                                result.getInt("ProdutoID"),
+                                                result.getInt("LocatarioID"),
                                                 result.getInt("LocadorID"),
-                                                result.getInt("LocatarioID")));
+                                                result.getInt("QuantidadeDias"),
+                                                result.getFloat("ValorAPagar"))); 
+                                                
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SolicitacaoDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -24,7 +24,7 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
 
     @Override
     public List<Produto> listar() throws PersistenciaException {
-       List<Produto> pedidos = new ArrayList();
+       List<Produto> produtos = new ArrayList();
         String sql = "SELECT * FROM FESASHARE.DBO.PRODUTO";
         Connection connection = null;
         try {
@@ -32,17 +32,17 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
             PreparedStatement pStatement = connection.prepareStatement(sql);
             ResultSet result = pStatement.executeQuery();
             while (result.next()) {
-                pedidos.add(new Produto(result.getInt("ProdutoID"), 
+                produtos.add(new Produto(result.getInt("ProdutoID"), 
                                             result.getInt("UsuarioID"),
                                             result.getInt("CategoriaID"),
-                                            result.getFloat("Preco_total"),
+                                            result.getDouble("PrecoTotal"),
                                             result.getString("Condicao"),
                                             result.getString("Titulo"),
                                             result.getString("Descricao"),
-                                            result.getString("Aluguel_Status"),
+                                            result.getString("AluguelStatus"),
                                             result.getInt("ImagemID"),
                                             result.getString("Detalhes"),
-                                            result.getInt("Tempo_Uso")));
+                                            result.getInt("TempoUso")));
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,7 +55,7 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
                 Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return pedidos;
+        return produtos;
     }
 
     @Override
@@ -71,7 +71,7 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
             PreparedStatement pStatement = connection.prepareStatement(sql);
             pStatement.setInt(1, e.getUsuarioID());
             pStatement.setInt(2, e.getCategoriaID());
-            pStatement.setFloat(3, e.getPrecoTotal()); // Criar modelo/método para calcular preço total
+            pStatement.setDouble(3, e.getPrecoTotal()); // Criar modelo/método para calcular preço total
             pStatement.setString(4, e.getCondicao());  // Criar modelo/método para mostrar preço unitário
             pStatement.setString(5, e.getTitulo());
             pStatement.setString(6, e.getDescricao()); 
@@ -121,9 +121,9 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-           pStatement.setInt(1, e.getUsuarioID());
+             pStatement.setInt(1, e.getUsuarioID());
             pStatement.setInt(2, e.getCategoriaID());
-            pStatement.setFloat(3, e.getPrecoTotal()); 
+            pStatement.setDouble(3, e.getPrecoTotal()); 
             pStatement.setString(4, e.getCondicao());  
             pStatement.setString(5, e.getTitulo());
             pStatement.setString(6, e.getDescricao()); 
@@ -188,7 +188,7 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
                 e.setCodigo(result.getInt("ProdutoID"));
                 e.setUsuarioID(result.getInt("UsuarioID"));
                 e.setCategoriaID(result.getInt("CategoriaID"));
-                e.setPrecoTotal(result.getFloat("PrecoTotal"));
+                e.setPrecoTotal(result.getDouble("PrecoTotal"));
                 e.setCondicao(result.getString("Condicao"));
                 e.setTitulo(result.getString("Titulo"));
                 e.setDescricao(result.getString("Descricao"));
@@ -213,28 +213,27 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
         return e;
     }
     
-    public List<Produto> listarPorCategoria(Produto e) throws PersistenciaException {
+    public List<Produto> listarPorCategoria(int ID) throws PersistenciaException {
         List<Produto> produtos = new ArrayList();
         String sql = "SELECT * FROM FESASHARE.DBO.PRODUTO WHERE CategoriaID = ?";
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setInt(1, e.getCategoriaID());
+            pStatement.setInt(1, ID);
             ResultSet result = pStatement.executeQuery();
-            if (result.next()) {
-
-                produtos.add(new Produto(result.getInt("ProdutoID"),
-                result.getInt("UsuarioID"),
-                result.getInt("CategoriaID"),
-                result.getFloat("PrecoTotal"),
-                result.getString("Condicao"),
-                result.getString("Titulo"),
-                result.getString("Descricao"),
-                result.getString("AluguelStatus"),
-                result.getInt("ImagemID"),
-                result.getString("Detalhes"),
-                result.getInt("TempoUso")));
+            while (result.next()) {
+                produtos.add(new Produto(result.getInt("ProdutoID"), 
+                                            result.getInt("UsuarioID"),
+                                            result.getInt("CategoriaID"),
+                                            result.getDouble("PrecoTotal"),
+                                            result.getString("Condicao"),
+                                            result.getString("Titulo"),
+                                            result.getString("Descricao"),
+                                            result.getString("AluguelStatus"),
+                                            result.getInt("ImagemID"),
+                                            result.getString("Detalhes"),
+                                            result.getInt("TempoUso")));
             }
             //-------------Inserir para datas---------------------//
             
@@ -252,18 +251,28 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
         return produtos;
     }
     
-    public Produto listarPorCondicao(Produto e) throws PersistenciaException {
+    public List<Produto> listarPorCondicao(String condicao) throws PersistenciaException {
+        List<Produto> produtos = new ArrayList();
         String sql = "SELECT * FROM FESASHARE.DBO.PRODUTO WHERE Condicao = ?";
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, e.getCondicao());
+            pStatement.setString(1, condicao);
             ResultSet result = pStatement.executeQuery();
-            if (result.next()) {
-
-                e.setCodigo(result.getInt("ProdutoID"));
-                e.setDescricao(result.getString("Descricao"));
+            while (result.next()) {
+                produtos.add(new Produto(result.getInt("ProdutoID"), 
+                                            result.getInt("UsuarioID"),
+                                            result.getInt("CategoriaID"),
+                                            result.getDouble("PrecoTotal"),
+                                            result.getString("Condicao"),
+                                            result.getString("Titulo"),
+                                            result.getString("Descricao"),
+                                            result.getString("AluguelStatus"),
+                                            result.getInt("ImagemID"),
+                                            result.getString("Detalhes"),
+                                            result.getInt("TempoUso")));
+            
             //-------------Inserir para datas---------------------//
             }
         } catch (ClassNotFoundException ex) {
@@ -277,21 +286,31 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
                 Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return e;
+        return produtos;
     }
     
-    public Produto listarPorStatus(Produto e) throws PersistenciaException {
+    public List<Produto> listarPorStatus(String status) throws PersistenciaException {
+        List<Produto> produtos = new ArrayList();
         String sql = "SELECT * FROM FESASHARE.DBO.PRODUTO WHERE AluguelStatus = ?";
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, e.getAluguelStatus());
+            pStatement.setString(1, status);
             ResultSet result = pStatement.executeQuery();
-            if (result.next()) {
-
-                e.setCodigo(result.getInt("ProdutoID"));
-                e.setDescricao(result.getString("Descricao"));
+            while (result.next()) {
+                produtos.add(new Produto(result.getInt("ProdutoID"), 
+                                            result.getInt("UsuarioID"),
+                                            result.getInt("CategoriaID"),
+                                            result.getDouble("PrecoTotal"),
+                                            result.getString("Condicao"),
+                                            result.getString("Titulo"),
+                                            result.getString("Descricao"),
+                                            result.getString("AluguelStatus"),
+                                            result.getInt("ImagemID"),
+                                            result.getString("Detalhes"),
+                                            result.getInt("TempoUso")));
+            
             //-------------Inserir para datas---------------------//
             }
         } catch (ClassNotFoundException ex) {
@@ -305,21 +324,34 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
                 Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return e;
+        return produtos;
     }
     
-    public Produto listarPorDescricao(Produto e) throws PersistenciaException {
-        String sql = "SELECT * FROM FESASHARE.DBO.PRODUTO WHERE Descricao LIKE %?%";
+    public List<Produto> listarPorDescricao(String descricao) throws PersistenciaException {
+        /*Ainda com problemas, erro na String SQL, na hora de mandar o comando pro banco ele se perde"*/
+        List<Produto> produtos = new ArrayList();
+        String sql = "SELECT * FROM FESASHARE.DBO.PRODUTO WHERE Descricao LIKE '%?%'";
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, e.getDescricao());
+            pStatement.setString(1, descricao);
+            System.out.println(pStatement.toString());
+            System.out.println(sql);
             ResultSet result = pStatement.executeQuery();
-            if (result.next()) {
-
-                e.setCodigo(result.getInt("ProdutoID"));
-                e.setDescricao(result.getString("Descricao"));
+            while (result.next()) {
+                produtos.add(new Produto(result.getInt("ProdutoID"), 
+                                            result.getInt("UsuarioID"),
+                                            result.getInt("CategoriaID"),
+                                            result.getDouble("PrecoTotal"),
+                                            result.getString("Condicao"),
+                                            result.getString("Titulo"),
+                                            result.getString("Descricao"),
+                                            result.getString("AluguelStatus"),
+                                            result.getInt("ImagemID"),
+                                            result.getString("Detalhes"),
+                                            result.getInt("TempoUso")));
+            
             //-------------Inserir para datas---------------------//
             }
         } catch (ClassNotFoundException ex) {
@@ -333,6 +365,6 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
                 Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return e;
+        return produtos;
     }
 }

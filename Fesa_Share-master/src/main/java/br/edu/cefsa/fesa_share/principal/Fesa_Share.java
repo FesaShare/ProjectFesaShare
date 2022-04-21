@@ -20,8 +20,8 @@ public class Fesa_Share {
 
     public static void main(String[] args) throws PersistenciaException {
         System.out.println("Hello World!");
-        Usuario usuario = new Usuario();
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
+       // Usuario usuario = new Usuario();
+       // UsuarioDAO usuarioDAO = new UsuarioDAO();
         
         //Para testar a inserção
        /* usuario.setNome("removido será");
@@ -51,21 +51,21 @@ public class Fesa_Share {
         //usuarioDAO.remover(usuario);
         
         //Testando insert de Produto
-        Produto prod = new Produto();
+        /*Produto prod = new Produto();
         ProdutoDAO prodDAO = new ProdutoDAO();
         prod.setUsuarioID(33);
         prod.setCategoriaID(6);
-        prod.setPrecoTotal(Float.MIN_NORMAL);
-        prod.setCondicao("Novo");
-        prod.setTitulo("Outro Arduino");
-        prod.setDescricao("Arduino zero bala");
+        prod.setPrecoTotal(100.5);
+        prod.setCondicao("Veio");
+        prod.setTitulo("Arduino");
+        prod.setDescricao("Arduino meia boca");
         prod.setAluguelStatus("Disponivel");
         prod.setImagemID(2);
-        prod.setDetalhes("Ano 2015");
-        prod.setTempoUso(2);
+        prod.setDetalhes("Ano 2010");
+        prod.setTempoUso(12);
         
         if ( prodDAO.inserir(prod))
-            System.out.println("Produto adicionado com sucesso, com id: " + prod.getCodigo());
+            System.out.println("Produto adicionado com sucesso, com id: " + prod.getCodigo()); */
         //Testando Alterar de Produto
         /*prod.setDetalhes("Acabei de derrubar no chão");
         prodDAO.alterar(prod);*/
@@ -74,21 +74,26 @@ public class Fesa_Share {
         
         //Para testar o listar por ID
         //List<Produto> listado = prodDAO.listarPorCategoria(prod);
-        
-        /*Não terminei de testar ****
-        List<Produto> listado2 = prodDAO.listarPorCategoria(prod);
-        System.out.println(listado2.);
-        for (int i = 0; i < listado2.size(); i++) {
-            Produto p = new Produto();
-            p.setTitulo(listado2.get(i).getTitulo());
-            p.setDescricao(listado2.get(i).getDescricao());
-            p.setDetalhes(listado2.get(i).getDetalhes());
-            System.out.println(p.getDescricao());
-            System.out.println(p.getDetalhes());
-        }
+        /*
+        ProdutoDAO prodDAO = new ProdutoDAO();
+        List<Produto> lista = prodDAO.listarPorCategoria(6);
+        lista.forEach(produto -> System.out.println(produto.getDescricao()));
         */
-        
-        
+        /*
+        ProdutoDAO prodDAO = new ProdutoDAO();
+        List<Produto> lista = prodDAO.listarPorCondicao("Novo");
+        lista.forEach(produto -> System.out.println(produto.getDescricao()));
+        */
+        /*///Com erro
+        ProdutoDAO prodDAO = new ProdutoDAO();
+        List<Produto> lista = prodDAO.listarPorDescricao("Arduino");
+        lista.forEach(produto -> System.out.println(produto.getDescricao())); */
+         /*
+        ProdutoDAO prodDAO = new ProdutoDAO();
+        List<Produto> lista = prodDAO.listarPorStatus("Disponivel");
+        lista.forEach(produto -> System.out.println(produto.getDescricao()));
+        */
+         
         /*
         PaginaPrincipal pgPrincipal = new PaginaPrincipal();
         pgPrincipal.setVisible(true);*/

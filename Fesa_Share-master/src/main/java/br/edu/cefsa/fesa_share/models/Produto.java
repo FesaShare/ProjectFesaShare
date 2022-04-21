@@ -16,7 +16,7 @@ public class Produto implements Serializable{
     private int codigo;
     private int usuarioID;
     private int categoriaID;
-    private Float precoTotal;
+    private double precoTotal;
     private String condicao;
     private String titulo;
     private String descricao;
@@ -25,7 +25,7 @@ public class Produto implements Serializable{
     private String detalhes;
     private int tempoUso;
 
-    public Produto(int codigo, int usuarioID, int categoriaID, Float precoTotal, String condicao, String titulo, String descricao, String aluguelStatus, int imagemID, String detalhes, int tempoUso) {
+    public Produto(int codigo, int usuarioID, int categoriaID, double precoTotal, String condicao, String titulo, String descricao, String aluguelStatus, int imagemID, String detalhes, int tempoUso) {
         this.codigo = codigo;
         this.usuarioID = usuarioID;
         this.categoriaID = categoriaID;
@@ -66,11 +66,11 @@ public class Produto implements Serializable{
         this.categoriaID = categoriaID;
     }
 
-    public Float getPrecoTotal() {
+    public double getPrecoTotal() {
         return precoTotal;
     }
 
-    public void setPrecoTotal(Float precoTotal) {
+    public void setPrecoTotal(double precoTotal) {
         this.precoTotal = precoTotal;
     }
 
