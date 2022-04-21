@@ -90,7 +90,7 @@ public class ImagemDAO implements GenericoDAO<Imagem> {
     }
 
     @Override
-    public void alterar(Imagem imagem) throws PersistenciaException {
+    public int alterar(Imagem imagem) throws PersistenciaException {
         String sql = "UPDATE dbo.tImagem SET Nome=?, Conteudo=? WHERE ID = ?";
 
         Connection connection = null;

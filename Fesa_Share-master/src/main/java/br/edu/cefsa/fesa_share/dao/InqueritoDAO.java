@@ -25,7 +25,7 @@ public class InqueritoDAO implements GenericoDAO<Inquerito> {
     }
 
     @Override
-    public void alterar(Inquerito e) throws PersistenciaException {
+    public int alterar(Inquerito e) throws PersistenciaException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

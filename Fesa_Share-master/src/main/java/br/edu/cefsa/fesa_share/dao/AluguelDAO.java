@@ -25,7 +25,7 @@ public class AluguelDAO implements GenericoDAO<Aluguel> {
     }
 
     @Override
-    public void alterar(Aluguel e) throws PersistenciaException {
+    public int alterar(Aluguel e) throws PersistenciaException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

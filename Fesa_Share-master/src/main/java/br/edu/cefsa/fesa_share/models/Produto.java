@@ -12,34 +12,67 @@ import java.io.Serializable;
  */
 public class Produto implements Serializable{
     //TODO: procurar como armazenar uma imagem e adiocionar o novo campo, get set e no construtor
-    public Produto() {
-    }
+    
+    private int codigo;
+    private int usuarioID;
+    private int categoriaID;
+    private Float precoTotal;
+    private String condicao;
+    private String titulo;
+    private String descricao;
+    private String aluguelStatus; //ALUGADO, DISPONIVEL, EM TRANSAÇÃO
+    private int imagemID;
+    private String detalhes;
+    private int tempoUso;
 
-    public Produto(int codigo, String descricao, String condicao, String aluguelStatus, Float precoTotal, String detalhes, int tempoUso) {
+    public Produto(int codigo, int usuarioID, int categoriaID, Float precoTotal, String condicao, String titulo, String descricao, String aluguelStatus, int imagemID, String detalhes, int tempoUso) {
         this.codigo = codigo;
-        this.descricao = descricao;
-        this.condicao = condicao;
-        this.aluguelStatus = aluguelStatus;
+        this.usuarioID = usuarioID;
+        this.categoriaID = categoriaID;
         this.precoTotal = precoTotal;
+        this.condicao = condicao;
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.aluguelStatus = aluguelStatus;
+        this.imagemID = imagemID;
         this.detalhes = detalhes;
         this.tempoUso = tempoUso;
     }
     
-        public Produto(int codigo, int usuarioID, int categoriaID, Float precoTotal, Float precoAluguel, String condicao, String descricao, String aluguelStatus, String imagemID, String detalhes, String tempoUso ) {
-
+    public Produto() {
     }
 
-    private int codigo;
-    private String descricao;
-    private String condicao;
-    private String aluguelStatus; //ALUGADO, DISPONIVEL, EM TRANSAÇÃO
-    private Float precoTotal;
-    private String detalhes;
-    private int tempoUso;
-    private Usuario usuario = new Usuario();
-    private Categoria categoria = new Categoria();
+    public int getCodigo() {
+        return codigo;
+    }
 
-    
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public int getUsuarioID() {
+        return usuarioID;
+    }
+
+    public void setUsuarioID(int usuarioID) {
+        this.usuarioID = usuarioID;
+    }
+
+    public int getCategoriaID() {
+        return categoriaID;
+    }
+
+    public void setCategoriaID(int categoriaID) {
+        this.categoriaID = categoriaID;
+    }
+
+    public Float getPrecoTotal() {
+        return precoTotal;
+    }
+
+    public void setPrecoTotal(Float precoTotal) {
+        this.precoTotal = precoTotal;
+    }
 
     public String getCondicao() {
         return condicao;
@@ -49,12 +82,36 @@ public class Produto implements Serializable{
         this.condicao = condicao;
     }
 
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public String getAluguelStatus() {
         return aluguelStatus;
     }
 
     public void setAluguelStatus(String aluguelStatus) {
         this.aluguelStatus = aluguelStatus;
+    }
+
+    public int getImagemID() {
+        return imagemID;
+    }
+
+    public void setImagemID(int imagemID) {
+        this.imagemID = imagemID;
     }
 
     public String getDetalhes() {
@@ -72,63 +129,7 @@ public class Produto implements Serializable{
     public void setTempoUso(int tempoUso) {
         this.tempoUso = tempoUso;
     }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getConsicao() {
-        return condicao;
-    }
-
-    public void setConsicao(String consicao) {
-        this.condicao = consicao;
-    }
-
-    public String getAluguel() {
-        return aluguelStatus;
-    }
-
-    public void setAluguel(String aluguel) {
-        this.aluguelStatus = aluguel;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
-    public Float getPrecoTotal() {
-        return precoTotal;
-    }
-
-    public void setPrecoTotal(Float precoTotal) {
-        this.precoTotal = precoTotal;
-    }
-
+    
     public Float depreciacao(Float precoTotal, int tempoUso){
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

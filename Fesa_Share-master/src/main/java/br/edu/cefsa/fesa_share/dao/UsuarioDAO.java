@@ -34,11 +34,11 @@ public class UsuarioDAO implements GenericoDAO<Usuario>{
             while (result.next()) {
                 usuario.add(new Usuario(result.getInt("UsuarioID"),
                                                 result.getString("Nome"),
-                                                (Reputacao) result.getObject("Reputacao"),
-                                                result.getString("Senha"), 
+                                                result.getString("Senha"),
                                                 result.getString("Email"), 
                                                 result.getString("Telefone"),
-                                                result.getString("endereco")));
+                                                result.getString("endereco"),
+                                                (Reputacao) result.getObject("Reputacao")));
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -56,7 +56,7 @@ public class UsuarioDAO implements GenericoDAO<Usuario>{
 
     @Override
     public boolean inserir(Usuario e) throws PersistenciaException {
-        String sql = "INSERT INTO FESASHARE.DBO.USUARIO (Nome, Senha, Email, Telefone, Endereco) VALUES (?)";
+        String sql = "INSERT INTO FESASHARE.DBO.USUARIO (Nome, Senha, Email, Telefone, Endereco) VALUES (?,?,?,?,?)";
        boolean inserido = false;
 
         Connection connection = null;
@@ -70,6 +70,15 @@ public class UsuarioDAO implements GenericoDAO<Usuario>{
             pStatement.setString(5, e.getEndereco());
             pStatement.execute();
             inserido = true;
+            
+            String sql2 = "select top 1 UsuarioID from FESASHARE.DBO.USUARIO order by UsuarioID desc"; 
+            PreparedStatement pStatement2 = connection.prepareStatement(sql2);
+            ResultSet result = pStatement2.executeQuery();
+            if (result.next())
+            {
+                e.setCodigo(result.getInt(1));
+            }
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             inserido = false;
@@ -90,22 +99,27 @@ public class UsuarioDAO implements GenericoDAO<Usuario>{
 
     @Override
     public void alterar(Usuario e) throws PersistenciaException {
-        String sql = "UPDATE FESASHARE.DBO.USUARIO SET Nome=?"
-                                                    + "Senha=?"
-                                                    + "Email=?"
-                                                    + "Telefone=?"
-                                                    + "Endereco=? WHERE USUARIOID = ?";
+        String sql = "UPDATE FESASHARE.DBO.USUARIO SET Nome=?, "
+                + "Senha=?, "
+                + "Email=?,"
+                + "Telefone=?,"
+                + "Endereco=?, "
+                + "reputacao=null "
+                + "WHERE USUARIOID = ?";
 
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
+            System.out.println(e.getCodigo());
             pStatement.setString(1, e.getNome());
             pStatement.setString(2, e.getSenha());
             pStatement.setString(3, e.getEmail());
             pStatement.setString(4, e.getTelefone());
             pStatement.setString(5, e.getEndereco());
+            pStatement.setLong(6, e.getCodigo());
             pStatement.execute();
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new PersistenciaException("Não foi possível conectar à base de dados!");
@@ -120,7 +134,7 @@ public class UsuarioDAO implements GenericoDAO<Usuario>{
             }
         }
     }
-
+    
     @Override
     public void remover(Usuario e) throws PersistenciaException {
         String sql = "DELETE FROM FESASHARE.DBO.USUARIO WHERE USUARIOID = ?";
@@ -163,8 +177,7 @@ public class UsuarioDAO implements GenericoDAO<Usuario>{
                 e.setTelefone(result.getString("Telefone"));
                 e.setEndereco(result.getString("Endereco"));
                 e.setReputacao((Reputacao) result.getObject("Reputacao"));
-                
-                
+                  
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
