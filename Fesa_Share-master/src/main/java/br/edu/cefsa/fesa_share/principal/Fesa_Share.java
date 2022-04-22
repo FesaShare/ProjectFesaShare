@@ -14,6 +14,8 @@ import br.edu.cefsa.fesa_share.models.Categoria;
 import br.edu.cefsa.fesa_share.models.Imagem;
 import br.edu.cefsa.fesa_share.models.Produto;
 import br.edu.cefsa.fesa_share.models.Usuario;
+import br.edu.cefsa.fesa_view.Login;
+import br.edu.cefsa.fesa_view.PaginaPrincipal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -99,9 +101,11 @@ public class Fesa_Share {
         lista.forEach(produto -> System.out.println(produto.getDescricao()));
         */
          
-        /*
-        PaginaPrincipal pgPrincipal = new PaginaPrincipal();
-        pgPrincipal.setVisible(true);*/
+        Login pgLogin = new Login();
+        pgLogin.setVisible(true);
+        
+        //PaginaPrincipal pgPrincipal = new PaginaPrincipal();
+        //pgPrincipal.setVisible(true);
 
         ImagemDAO dao = new ImagemDAO();
         

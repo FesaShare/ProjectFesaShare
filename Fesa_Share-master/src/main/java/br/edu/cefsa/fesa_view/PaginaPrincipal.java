@@ -257,6 +257,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jButton19.setText("Chat");
 
         jButton20.setText("Publicações");
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
 
         jButton21.setText("Solicitações");
 
@@ -579,6 +584,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -649,6 +655,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         NovaCategoria pgNovaCategoria = new NovaCategoria();
         pgNovaCategoria.setVisible(true);
     }//GEN-LAST:event_jButton30ActionPerformed
+
+    //Publicações
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        Publicacoes pgPublic = new Publicacoes();
+        pgPublic.setVisible(true);
+    }//GEN-LAST:event_jButton20ActionPerformed
 
     /**
      * @param args the command line arguments
