@@ -34,10 +34,10 @@ public class SolicitacaoDAO implements GenericoDAO<Solicitacao> {
             while (result.next()) {
                 solicitacao.add(new Solicitacao(result.getInt("SolicitacaoID"),
                                                 result.getInt("ProdutoID"),
-                                                result.getInt("LocatarioID"),
-                                                result.getInt("LocadorID"),
                                                 result.getInt("QuantidadeDias"),
-                                                result.getFloat("ValorAPagar"))); 
+                                                result.getFloat("ValorAPagar"),
+                                                result.getInt("LocadorID"),
+                                                result.getInt("LocatarioID"))); 
                                                 
             }
         } catch (ClassNotFoundException ex) {
@@ -63,11 +63,11 @@ public class SolicitacaoDAO implements GenericoDAO<Solicitacao> {
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setInt(1, e.getProduto().getCodigo());
+            pStatement.setInt(1, e.getProdutoID());
             pStatement.setInt(2, e.getLocador().getCodigo());
             pStatement.setInt(3, e.getLocatario().getCodigo());
-            pStatement.setInt(4, e.getQtdDias());
-            pStatement.setFloat(5, e.getValor());
+            pStatement.setInt(4, e.getQuantidadeDias());
+            pStatement.setFloat(5, e.getValorAPagar());
             pStatement.execute();
             inserido = true;
         } catch (ClassNotFoundException ex) {
@@ -96,8 +96,8 @@ public class SolicitacaoDAO implements GenericoDAO<Solicitacao> {
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setInt(1, e.getQtdDias());
-            pStatement.setFloat(2, e.getValor());
+            pStatement.setInt(1, e.getQuantidadeDias());
+            pStatement.setFloat(2, e.getValorAPagar());
             pStatement.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SolicitacaoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -150,8 +150,8 @@ public class SolicitacaoDAO implements GenericoDAO<Solicitacao> {
             ResultSet result = pStatement.executeQuery();
             if (result.next()) {
                 e.setCodigo(result.getInt("SolicitacaoID"));
-                e.setQtdDias(result.getInt("QuantidadeDias"));
-                e.setValor(result.getFloat("ValorAPagar"));
+                e.setQuantidadeDias(result.getInt("QuantidadeDias"));
+                e.setValorAPagar(result.getFloat("ValorAPagar"));
                 
             }
         } catch (ClassNotFoundException ex) {

@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -29,8 +30,9 @@ public class UsuarioDAO implements GenericoDAO<Usuario>{
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
-            PreparedStatement pStatement = connection.prepareStatement(sql);
-            ResultSet result = pStatement.executeQuery();
+            Statement pStatement = connection.createStatement();
+            ResultSet result = pStatement.executeQuery(sql);
+            System.out.println(result);
             while (result.next()) {
                 usuario.add(new Usuario(result.getInt("UsuarioID"),
                                                 result.getString("Nome"),
@@ -39,6 +41,7 @@ public class UsuarioDAO implements GenericoDAO<Usuario>{
                                                 result.getString("Telefone"),
                                                 result.getString("endereco"),
                                                 (Reputacao) result.getObject("Reputacao")));
+                
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -51,6 +54,7 @@ public class UsuarioDAO implements GenericoDAO<Usuario>{
                 Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
         return usuario;
     }
 

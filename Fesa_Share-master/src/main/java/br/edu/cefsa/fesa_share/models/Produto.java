@@ -130,6 +130,15 @@ public class Produto implements Serializable{
         this.tempoUso = tempoUso;
     }
     
+    @Override
+	public String toString()
+	{
+            return this.getCodigo() + " " + this.getTitulo()+ " " + this.getDescricao()+ " " + 
+                   this.getDetalhes()+ " " + this.getUsuarioID() + " " + this.getCategoriaID()+ " " + 
+                   this.getAluguelStatus()+ " " + this.getImagemID()+ " " + this.getPrecoTotal()+ " " + 
+                    this.getTempoUso();
+        }
+    
     public Float depreciacao(Float precoTotal, int tempoUso){
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

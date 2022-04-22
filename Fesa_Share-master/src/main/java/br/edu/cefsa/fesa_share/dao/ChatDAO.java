@@ -86,7 +86,7 @@ public class ChatDAO implements GenericoDAO<Chat> {
     }
 
     @Override
-    public int alterar(Chat e) throws PersistenciaException {
+    public void alterar(Chat e) throws PersistenciaException {
         String sql = "UPDATE FESASHARE.DBO.CHAT SET MENSAGEM=? WHERE CHATID = ?";
 
         Connection connection = null;

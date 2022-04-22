@@ -91,7 +91,7 @@ public class FilaDAO implements GenericoDAO<Fila> {
     }
 
     @Override
-    public int alterar(Fila e) throws PersistenciaException {
+    public void alterar(Fila e) throws PersistenciaException {
         String sql = "UPDATE FESASHARE.DBO.FILA SET POSICAO=?, DESCRICAO=?, DATAPREVISTA=? WHERE FILAID = ?";
 
         Connection connection = null;

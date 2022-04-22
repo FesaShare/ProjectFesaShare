@@ -15,7 +15,7 @@ public class Solicitacao implements Serializable{
     public Solicitacao() {
     }
 
-    public Solicitacao(int codigo, int qtdDias, float valor, int locadorID, int locatarioID) {
+    public Solicitacao(int codigo, int produtoID,int qtdDias, float valor, int locadorID, int locatarioID) {
     }
     
     public int codigo;

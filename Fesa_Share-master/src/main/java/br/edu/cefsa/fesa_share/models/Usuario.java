@@ -91,4 +91,12 @@ public class Usuario implements Serializable {
         this.endereco = endereco;
     }
     
+    @Override
+	public String toString()
+	{
+            return this.getCodigo() + " " + this.getNome()+ " " + this.getSenha() + " " +
+                   this.getEmail()+ " " + this.getTelefone()+ " " +this.getEndereco();
+        }
+        
+        
 }

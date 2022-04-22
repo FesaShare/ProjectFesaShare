@@ -78,7 +78,7 @@ public class CategoriaDAO implements GenericoDAO<Categoria>{
     }
 
     @Override
-    public int alterar(Categoria e) throws PersistenciaException {
+    public void alterar(Categoria e) throws PersistenciaException {
          String sql = "UPDATE FESASHARE.DBO.CATEGORIA SET Descricao=? WHERE CategoriaID = ?";
 
         Connection connection = null;

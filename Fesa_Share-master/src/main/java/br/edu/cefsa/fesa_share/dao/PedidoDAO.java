@@ -93,7 +93,7 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
     }
 
     @Override
-    public int alterar(Pedido e) throws PersistenciaException {
+    public void alterar(Pedido e) throws PersistenciaException {
         String sql = "UPDATE FESASHARE.DBO.PEDIDOS SET PRECO=? WHERE PAGAMENTOID = ?";
 
         Connection connection = null;
