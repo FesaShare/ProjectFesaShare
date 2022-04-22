@@ -6,10 +6,12 @@
 package br.edu.cefsa.fesa_share.principal;
 
 import br.edu.cefsa.fesa_share.dao.CategoriaDAO;
+import br.edu.cefsa.fesa_share.dao.ImagemDAO;
 import br.edu.cefsa.fesa_share.dao.ProdutoDAO;
 import br.edu.cefsa.fesa_share.dao.UsuarioDAO;
 import br.edu.cefsa.fesa_share.exception.PersistenciaException;
 import br.edu.cefsa.fesa_share.models.Categoria;
+import br.edu.cefsa.fesa_share.models.Imagem;
 import br.edu.cefsa.fesa_share.models.Produto;
 import br.edu.cefsa.fesa_share.models.Usuario;
 import java.util.Arrays;
@@ -101,11 +103,9 @@ public class Fesa_Share {
         PaginaPrincipal pgPrincipal = new PaginaPrincipal();
         pgPrincipal.setVisible(true);*/
 
-        Usuario user = new Usuario();
-        user.setCodigo(1);
-        UsuarioDAO dao = new UsuarioDAO();
+        ImagemDAO dao = new ImagemDAO();
         
-        Usuario usuarios = dao.listarPorID(user);
-        System.out.println(usuarios);
+        List<Imagem> imegens = dao.listar();
+        imegens.forEach(System.out::println);
     }
 }

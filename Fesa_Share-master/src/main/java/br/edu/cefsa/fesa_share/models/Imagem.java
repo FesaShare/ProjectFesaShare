@@ -6,6 +6,7 @@
 package br.edu.cefsa.fesa_share.models;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  *
@@ -18,8 +19,8 @@ public class Imagem implements Serializable {
     private byte[] conteudo;
     private String caminho;
 
-    public Imagem(long aLong, String string, byte[] bytes) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Imagem(long aLong, String string, byte[] bytes, String caminho) {
+        
     }
 
     public String getCaminho() {
@@ -58,5 +59,11 @@ public class Imagem implements Serializable {
     public void setConteudo(byte[] conteudo) {
         this.conteudo = conteudo;
     }
-
+    
+    @Override
+	public String toString()
+	{
+            return this.getCodigo() + " " + this.getNome() + " " +
+                   Arrays.toString(this.getConteudo())+ " " + this.getCaminho();
+        }
 }

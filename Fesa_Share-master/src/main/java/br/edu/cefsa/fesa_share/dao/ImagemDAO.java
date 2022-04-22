@@ -32,14 +32,14 @@ public class ImagemDAO implements GenericoDAO<Imagem> {
     @Override
     public List<Imagem> listar() throws PersistenciaException {
         List<Imagem> imagems = new ArrayList();
-        String sql = "SELECT * FROM dbo.tImagem";
+        String sql = "SELECT * FROM dbo.Imagem";
         Connection connection = null;
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
             ResultSet result = pStatement.executeQuery();
             while (result.next()) {
-                imagems.add(new Imagem(result.getLong("ID_IMAGEM"), result.getString("NOME"), result.getBytes("CONTEUDO")));
+                imagems.add(new Imagem(result.getLong("IMAGEMID"), result.getString("Titulo"), result.getBytes("CONTEUDO"), result.getString("Caminho")));
             }
             connection.close();
         } catch (ClassNotFoundException ex) {
@@ -58,7 +58,7 @@ public class ImagemDAO implements GenericoDAO<Imagem> {
 
     @Override
     public boolean inserir(Imagem imagem) throws PersistenciaException {
-        String sql = "INSERT INTO dbo.tImagem (Nome, Conteudo, Caminho) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO dbo.Imagem (Titulo, Conteudo, Caminho) VALUES (?, ?, ?)";
         
         Connection connection = null;
         try {
@@ -91,7 +91,7 @@ public class ImagemDAO implements GenericoDAO<Imagem> {
 
     @Override
     public void alterar(Imagem imagem) throws PersistenciaException {
-        String sql = "UPDATE dbo.tImagem SET Nome=?, Conteudo=? WHERE ID = ?";
+        String sql = "UPDATE dbo.Imagem SET Titulo=?, Conteudo=?, Caminho=? WHERE IMAGEMID = ?";
 
         Connection connection = null;
         try {
@@ -99,7 +99,8 @@ public class ImagemDAO implements GenericoDAO<Imagem> {
             PreparedStatement pStatement = connection.prepareStatement(sql);
             pStatement.setString(1, imagem.getNome());
             pStatement.setBlob(2, new SerialBlob(imagem.getConteudo()));
-            pStatement.setLong(3, imagem.getCodigo());
+            pStatement.setString(3, imagem.getCaminho());
+            pStatement.setLong(4, imagem.getCodigo());
             pStatement.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ImagemDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -118,7 +119,7 @@ public class ImagemDAO implements GenericoDAO<Imagem> {
 
     @Override
     public void remover(Imagem imagem) throws PersistenciaException {
-        String sql = "DELETE FROM dbo.tImagem WHERE ID = ?";
+        String sql = "DELETE FROM dbo.Imagem WHERE IMAGEMID = ?";
 
         Connection connection = null;
         try {
