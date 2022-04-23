@@ -4,6 +4,14 @@
  */
 package br.edu.cefsa.fesa_view;
 
+import br.edu.cefsa.fesa_share.dao.ProdutoDAO;
+import br.edu.cefsa.fesa_share.exception.PersistenciaException;
+import br.edu.cefsa.fesa_share.models.Produto;
+import br.edu.cefsa.fesa_share.util.DadosEstaticos;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author lasou
@@ -15,6 +23,23 @@ public class Publicacoes extends javax.swing.JFrame {
      */
     public Publicacoes() {
         initComponents();
+        ProdutoDAO prodDAO = new ProdutoDAO();
+        List<Produto> lista;
+        try {
+            lista = prodDAO.listarPorUsuario(DadosEstaticos.usuarioLogado.getCodigo());
+            lbQtdProdutos.setText(Integer.toString(lista.size()));
+            int numPag = Math.round(lista.size() / 3);
+            if(lista.size() % 3 > 0)
+                numPag = numPag + 1;
+            lbNumPag.setText(Integer.toString(numPag));
+               
+            
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(Publicacoes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
     }
 
     /**
@@ -32,37 +57,41 @@ public class Publicacoes extends javax.swing.JFrame {
         txtBuscarProduto = new javax.swing.JTextField();
         jButton29 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         lbProduto2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        lbCondicao2 = new javax.swing.JLabel();
+        lbDescricao2 = new javax.swing.JLabel();
+        lbPreco2 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         lbProduto3 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        lbPreco3 = new javax.swing.JLabel();
+        lbDescricao3 = new javax.swing.JLabel();
+        lbCondicao3 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lbPagAtual = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        lbNumPag = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         lbProduto1 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        lbDescricao1 = new javax.swing.JLabel();
+        lbCondicao1 = new javax.swing.JLabel();
+        lbPreco1 = new javax.swing.JLabel();
+        lbQtdPublicacoes1 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        lbQtdProdutos = new javax.swing.JLabel();
+        lbUsuario = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -98,12 +127,11 @@ public class Publicacoes extends javax.swing.JFrame {
 
         jButton8.setText("Sair");
         jButton8.setToolTipText("");
-
-        jButton7.setText("Quem Somos");
-
-        jButton6.setText("Sobre");
-
-        jButton5.setText("Alugue já!");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jPanel7.setBackground(java.awt.SystemColor.controlHighlight);
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
@@ -130,13 +158,6 @@ public class Publicacoes extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel12.setText("Publicações");
 
-        jButton9.setText("Publicar novo Produto");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -149,19 +170,11 @@ public class Publicacoes extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txtBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton29, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
+                        .addComponent(jButton29, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
         );
         jPanel2Layout.setVerticalGroup(
@@ -172,12 +185,7 @@ public class Publicacoes extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton8)
-                                    .addComponent(jButton7)
-                                    .addComponent(jButton6)
-                                    .addComponent(jButton5)
-                                    .addComponent(jButton9))
+                                .addComponent(jButton8)
                                 .addGap(16, 16, 16))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
@@ -223,10 +231,14 @@ public class Publicacoes extends javax.swing.JFrame {
         lbProduto2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbProduto2.setText("Produto 2");
 
-        jTextArea2.setBackground(new java.awt.Color(230, 230, 230));
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        lbCondicao2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbCondicao2.setText("Condição 2");
+
+        lbDescricao2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbDescricao2.setText("Descricao 2");
+
+        lbPreco2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPreco2.setText("Preço 2");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -235,12 +247,15 @@ public class Publicacoes extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbDescricao2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbCondicao2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(lbProduto2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbProduto2)
+                            .addComponent(lbPreco2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -251,9 +266,13 @@ public class Publicacoes extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(lbProduto2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2))
+                        .addComponent(lbDescricao2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbCondicao2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbPreco2))
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel10.setBackground(new java.awt.Color(204, 204, 204));
@@ -289,10 +308,14 @@ public class Publicacoes extends javax.swing.JFrame {
         lbProduto3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbProduto3.setText("Produto 3");
 
-        jTextArea4.setBackground(new java.awt.Color(230, 230, 230));
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        lbPreco3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPreco3.setText("Preço 3");
+
+        lbDescricao3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbDescricao3.setText("Descricao 3");
+
+        lbCondicao3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbCondicao3.setText("Condição 3");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -303,10 +326,13 @@ public class Publicacoes extends javax.swing.JFrame {
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbDescricao3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbCondicao3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(lbProduto3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane4))
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbProduto3)
+                            .addComponent(lbPreco3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -317,22 +343,26 @@ public class Publicacoes extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(lbProduto3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4))
+                        .addComponent(lbDescricao3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbCondicao3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbPreco3))
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel16.setText("Página");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setText("1");
+        lbPagAtual.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPagAtual.setText("1");
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel13.setText("de");
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel17.setText("1");
+        lbNumPag.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbNumPag.setText("1");
 
         jButton10.setText("Anterior");
         jButton10.setToolTipText("");
@@ -378,10 +408,14 @@ public class Publicacoes extends javax.swing.JFrame {
         lbProduto1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbProduto1.setText("Produto 1");
 
-        jTextArea3.setBackground(new java.awt.Color(230, 230, 230));
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        lbDescricao1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbDescricao1.setText("Descricao 1");
+
+        lbCondicao1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbCondicao1.setText("Condição 1");
+
+        lbPreco1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPreco1.setText("Preço 1");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -392,10 +426,13 @@ public class Publicacoes extends javax.swing.JFrame {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbDescricao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbCondicao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(lbProduto1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3))
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbProduto1)
+                            .addComponent(lbPreco1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -406,10 +443,33 @@ public class Publicacoes extends javax.swing.JFrame {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(lbProduto1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3))
+                        .addComponent(lbDescricao1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbCondicao1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbPreco1))
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        lbQtdPublicacoes1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbQtdPublicacoes1.setText("produtos para o usuário(a)");
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel15.setText("Foram encontrados");
+
+        lbQtdProdutos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbQtdProdutos.setText("... ");
+
+        lbUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbUsuario.setText("... ");
+
+        jButton9.setText("Publicar novo Produto");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -419,17 +479,27 @@ public class Publicacoes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 1088, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 1088, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel15)
+                        .addGap(12, 12, 12)
+                        .addComponent(lbQtdProdutos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbQtdPublicacoes1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbUsuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
+                        .addComponent(lbPagAtual)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel17)
+                        .addComponent(lbNumPag)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -450,12 +520,18 @@ public class Publicacoes extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                    .addComponent(lbPagAtual)
                     .addComponent(jLabel13)
                     .addComponent(jLabel16)
-                    .addComponent(jLabel17)
+                    .addComponent(lbNumPag)
                     .addComponent(jButton10)
-                    .addComponent(jButton11))
+                    .addComponent(jButton11)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel15)
+                        .addComponent(lbQtdProdutos)
+                        .addComponent(lbQtdPublicacoes1)
+                        .addComponent(lbUsuario))
+                    .addComponent(jButton9))
                 .addContainerGap())
         );
 
@@ -476,6 +552,10 @@ public class Publicacoes extends javax.swing.JFrame {
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        Publicacoes.this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -517,9 +597,6 @@ public class Publicacoes extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton29;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel10;
@@ -527,10 +604,9 @@ public class Publicacoes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -540,15 +616,23 @@ public class Publicacoes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JLabel lbCondicao1;
+    private javax.swing.JLabel lbCondicao2;
+    private javax.swing.JLabel lbCondicao3;
+    private javax.swing.JLabel lbDescricao1;
+    private javax.swing.JLabel lbDescricao2;
+    private javax.swing.JLabel lbDescricao3;
+    private javax.swing.JLabel lbNumPag;
+    private javax.swing.JLabel lbPagAtual;
+    private javax.swing.JLabel lbPreco1;
+    private javax.swing.JLabel lbPreco2;
+    private javax.swing.JLabel lbPreco3;
     private javax.swing.JLabel lbProduto1;
     private javax.swing.JLabel lbProduto2;
     private javax.swing.JLabel lbProduto3;
+    private javax.swing.JLabel lbQtdProdutos;
+    private javax.swing.JLabel lbQtdPublicacoes1;
+    private javax.swing.JLabel lbUsuario;
     private javax.swing.JTextField txtBuscarProduto;
     // End of variables declaration//GEN-END:variables
 }

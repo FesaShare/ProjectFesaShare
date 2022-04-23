@@ -4,6 +4,9 @@
  */
 package br.edu.cefsa.fesa_view;
 
+import br.edu.cefsa.fesa_share.models.Usuario;
+import br.edu.cefsa.fesa_share.util.DadosEstaticos;
+
 /**
  *
  * @author PC Novo
@@ -15,6 +18,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
      */
     public PaginaPrincipal() {
         initComponents();
+        Usuario u = new Usuario();
+        lbUsuario.setText(DadosEstaticos.usuarioLogado.getNome());
     }
 
     /**
@@ -74,7 +79,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton29 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jButton30 = new javax.swing.JButton();
+        lbUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1050, 750));
@@ -332,6 +337,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jButton8.setText("Sair");
         jButton8.setToolTipText("");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jPanel5.setBackground(java.awt.SystemColor.controlHighlight);
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
@@ -467,19 +477,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jLabel6.getAccessibleContext().setAccessibleDescription("");
 
-        jLabel7.setText("Fesa Share 2022 - Versão 1.0.0");
+        jLabel7.setText("Bem vindo ao Fesa Share");
 
         jButton29.setText("Buscar");
         jButton29.setToolTipText("");
 
         jLabel8.setText("Categorias mais buscadas");
 
-        jButton30.setText("Testes");
-        jButton30.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton30ActionPerformed(evt);
-            }
-        });
+        lbUsuario.setText("...");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -501,9 +506,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                                 .addGap(22, 22, 22))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lbUsuario)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton30)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton6)
@@ -543,7 +548,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                             .addComponent(jButton6)
                             .addComponent(jButton5)
                             .addComponent(jLabel7)
-                            .addComponent(jButton30))
+                            .addComponent(lbUsuario))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -650,17 +655,16 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtBuscarProduto.setText("Bola de Futebol");
     }//GEN-LAST:event_jButton18ActionPerformed
-    //Testes
-    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
-        NovaCategoria pgNovaCategoria = new NovaCategoria();
-        pgNovaCategoria.setVisible(true);
-    }//GEN-LAST:event_jButton30ActionPerformed
 
     //Publicações
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         Publicacoes pgPublic = new Publicacoes();
         pgPublic.setVisible(true);
     }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        PaginaPrincipal.this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -721,7 +725,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -746,6 +749,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lbUsuario;
     private javax.swing.JTextField txtBuscarProduto;
     // End of variables declaration//GEN-END:variables
 }

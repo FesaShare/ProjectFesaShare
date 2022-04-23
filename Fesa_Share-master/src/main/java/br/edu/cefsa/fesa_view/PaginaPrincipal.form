@@ -75,9 +75,9 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="lbUsuario" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jButton30" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButton6" min="-2" max="-2" attributes="0"/>
@@ -129,7 +129,7 @@
                               <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton30" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -537,6 +537,9 @@
             <Property name="text" type="java.lang.String" value="Sair"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel5">
           <Properties>
@@ -795,7 +798,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fesa Share 2022 - Vers&#xe3;o 1.0.0"/>
+            <Property name="text" type="java.lang.String" value="Bem vindo ao Fesa Share"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton29">
@@ -809,13 +812,10 @@
             <Property name="text" type="java.lang.String" value="Categorias mais buscadas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton30">
+        <Component class="javax.swing.JLabel" name="lbUsuario">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Testes"/>
+            <Property name="text" type="java.lang.String" value="..."/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton30ActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

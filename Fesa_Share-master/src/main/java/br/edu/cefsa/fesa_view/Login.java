@@ -7,6 +7,7 @@ package br.edu.cefsa.fesa_view;
 import br.edu.cefsa.fesa_share.dao.UsuarioDAO;
 import br.edu.cefsa.fesa_share.exception.PersistenciaException;
 import br.edu.cefsa.fesa_share.models.Usuario;
+import br.edu.cefsa.fesa_share.util.DadosEstaticos;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -199,7 +200,12 @@ public class Login extends javax.swing.JFrame {
         {
             String pwd = String.valueOf(txtSenha.getPassword());
             if(u.getNome().equals(txtUsuario.getText()) && u.getSenha().equals(pwd))
+            {
                 usuarioValido = true;
+                DadosEstaticos.usuarioLogado = u;
+                break;
+            }
+                
         }
         
         if(usuarioValido)
