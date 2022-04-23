@@ -4,6 +4,13 @@
  */
 package br.edu.cefsa.fesa_view;
 
+import br.edu.cefsa.fesa_share.dao.UsuarioDAO;
+import br.edu.cefsa.fesa_share.exception.PersistenciaException;
+import br.edu.cefsa.fesa_share.models.Usuario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author PC Novo
@@ -122,8 +129,18 @@ public class NovoUsuario extends javax.swing.JFrame {
         );
 
         jButton1.setText("Salvar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,6 +177,31 @@ public class NovoUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         //Para testar a inserção
+        Usuario usuario = new Usuario();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+         String pwd = String.valueOf(txtSenha.getPassword()); 
+        usuario.setNome(txtNome.getText());
+        usuario.setSenha(pwd);
+        usuario.setEmail(txtEmail.getText());
+        usuario.setTelefone(txtTelefone.getText());
+        usuario.setEndereco(txtEndereco.getText());
+        usuario.setReputacao(null);
+        
+        try {
+            if (usuarioDAO.inserir(usuario))
+                JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso");
+            NovoUsuario.this.dispose();
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(NovoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+          NovoUsuario.this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
