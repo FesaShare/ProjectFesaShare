@@ -23,9 +23,10 @@ import javax.swing.JPanel;
  */
 public class PaginaUnica extends javax.swing.JFrame {
     
-    int produtoAtual = 1;
+    int produtoAtual = 0;
     int numProdutos = 0;
     List<Produto> lista = new ArrayList<Produto>();
+    List<Usuario> listaUsuarios = new ArrayList<Usuario>();
 
     /**
      * Creates new form PaginaUnica
@@ -33,13 +34,23 @@ public class PaginaUnica extends javax.swing.JFrame {
     public PaginaUnica() {
         initComponents();
         
+        if(lista.isEmpty())
+        {
+            carregaListaDeProdutos();
+            carregaListaDeUsuarios();
+        }
+            
+        
+
+    }
+    
+    public void carregaListaDeProdutos()
+    {
         ProdutoDAO prodDAO = new ProdutoDAO();
         List<Produto> listaPorUsuario;
         String categoria = cbCategoria.getSelectedItem()+"";
-        lbNumProdutoAtual.setText(Integer.toString(produtoAtual));
+        lbNumProdutoAtual.setText(Integer.toString(produtoAtual + 1));
         
-        if(lista.isEmpty())
-        {
             try {
 
                     if(categoria.equals("Todos"))
@@ -57,64 +68,61 @@ public class PaginaUnica extends javax.swing.JFrame {
                 } catch (PersistenciaException ex) {
                     Logger.getLogger(Publicacoes.class.getName()).log(Level.SEVERE, null, ex);
                 }
+
+    }
+    
+    public void carregaListaDeUsuarios()
+    {
+
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        try {
+            listaUsuarios = usuarioDAO.listar();
+
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(PaginaUnica.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
     }
     
     public void atualizaDadosListaProdutos()
     {
-                btn1_lbTituloProduto.setText(lista.get(produtoAtual).getTitulo());
-                btn1_lbDescricaoProduto.setText(lista.get(produtoAtual).getDescricao());
-                btn1_lbCondicoesProduto.setText(lista.get(produtoAtual).getCondicao());
-                btn1_lbPrecoProduto.setText(Double.toString(lista.get(produtoAtual).getPrecoTotal()));
-                btn1_lbNomeProprietario.setText(obtemNomeUsuario(lista.get(produtoAtual).getUsuarioID()));
-                btn1_lbContatoProprietario.setText(obtemContatoUsuario(lista.get(produtoAtual).getUsuarioID()));
+        btn1_lbTituloProduto.setText(lista.get(produtoAtual).getTitulo());
+        btn1_lbDescricaoProduto.setText(lista.get(produtoAtual).getDescricao());
+        btn1_lbCondicoesProduto.setText(lista.get(produtoAtual).getCondicao());
+        btn1_lbPrecoProduto.setText(Double.toString(lista.get(produtoAtual).getPrecoTotal()));
+        btn1_lbNomeProprietario.setText(obtemNomeUsuario(lista.get(produtoAtual).getUsuarioID()));
+        btn1_lbContatoProprietario.setText(obtemContatoUsuario(lista.get(produtoAtual).getUsuarioID()));
     }
     
     public String obtemNomeUsuario(int id)
     {
         String nomeUsuario = "";
-        List<Usuario> usuarios;
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        try {
-            usuarios = usuarioDAO.listar();
-            for(Usuario u : usuarios)
+
+            for(Usuario u : listaUsuarios)
             {
                 if(u.getCodigo() == id)
                 {
                     nomeUsuario = u.getNome();
                     break;
                 }
-
-                    
             }
-        } catch (PersistenciaException ex) {
-            Logger.getLogger(PaginaUnica.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
         return nomeUsuario;
     }
     
         public String obtemContatoUsuario(int id)
     {
         String contatoUsuario = "";
-        List<Usuario> usuarios;
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        try {
-            usuarios = usuarioDAO.listar();
-            for(Usuario u : usuarios)
+
+            for(Usuario u : listaUsuarios)
             {
                 if(u.getCodigo() == id)
                 {
                     contatoUsuario = u.getEmail();
                     break;
                 }
-
                     
             }
-        } catch (PersistenciaException ex) {
-            Logger.getLogger(PaginaUnica.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
         return contatoUsuario;
     }
 
