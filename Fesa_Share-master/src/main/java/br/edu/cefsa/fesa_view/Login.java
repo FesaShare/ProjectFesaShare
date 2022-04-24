@@ -210,8 +210,10 @@ public class Login extends javax.swing.JFrame {
         
         if(usuarioValido)
         {
-            PaginaPrincipal pgPrincipal = new PaginaPrincipal();
-            pgPrincipal.setVisible(true);
+            //PaginaPrincipal pgPrincipal = new PaginaPrincipal();
+            //pgPrincipal.setVisible(true);
+            PaginaUnica pgUnica = new PaginaUnica();
+            pgUnica.setVisible(true);
         }
         else
         {
