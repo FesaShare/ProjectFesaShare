@@ -4,9 +4,11 @@
  */
 package br.edu.cefsa.fesa_view;
 
+import br.edu.cefsa.fesa_share.dao.CategoriaDAO;
 import br.edu.cefsa.fesa_share.dao.ProdutoDAO;
 import br.edu.cefsa.fesa_share.dao.UsuarioDAO;
 import br.edu.cefsa.fesa_share.exception.PersistenciaException;
+import br.edu.cefsa.fesa_share.models.Categoria;
 import br.edu.cefsa.fesa_share.models.Produto;
 import br.edu.cefsa.fesa_share.models.Usuario;
 import br.edu.cefsa.fesa_share.util.DadosEstaticos;
@@ -27,6 +29,7 @@ public class PaginaUnica extends javax.swing.JFrame {
     int numProdutos = 0;
     List<Produto> lista = new ArrayList<Produto>();
     List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+    List<Categoria> listaCategorias = new ArrayList<Categoria>();
 
     /**
      * Creates new form PaginaUnica
@@ -38,10 +41,10 @@ public class PaginaUnica extends javax.swing.JFrame {
         {
             carregaListaDeProdutos();
             carregaListaDeUsuarios();
+            carregaListaDeCategorias();
         }
             
         
-
     }
     
     public void carregaListaDeProdutos()
@@ -83,14 +86,47 @@ public class PaginaUnica extends javax.swing.JFrame {
         }
     }
     
+    public void carregaListaDeCategorias()
+    {
+        CategoriaDAO categoriaDAO = new CategoriaDAO();
+        
+        try {
+            listaCategorias = categoriaDAO.listar();
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(PaginaUnica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
     public void atualizaDadosListaProdutos()
     {
-        btn1_lbTituloProduto.setText(lista.get(produtoAtual).getTitulo());
-        btn1_lbDescricaoProduto.setText(lista.get(produtoAtual).getDescricao());
-        btn1_lbCondicoesProduto.setText(lista.get(produtoAtual).getCondicao());
-        btn1_lbPrecoProduto.setText(Double.toString(lista.get(produtoAtual).getPrecoTotal()));
-        btn1_lbNomeProprietario.setText(obtemNomeUsuario(lista.get(produtoAtual).getUsuarioID()));
-        btn1_lbContatoProprietario.setText(obtemContatoUsuario(lista.get(produtoAtual).getUsuarioID()));
+        if(produtoAtual < lista.size())
+        {
+            btn1_lbTituloProduto.setText(lista.get(produtoAtual).getTitulo());
+            btn1_lbDescricaoProduto.setText(lista.get(produtoAtual).getDescricao());
+            btn1_lbCondicoesProduto.setText(lista.get(produtoAtual).getCondicao());
+            btn1_lbPrecoProduto.setText(Double.toString(lista.get(produtoAtual).getPrecoTotal()));
+            btn1_lbNomeProprietario.setText(obtemNomeUsuario(lista.get(produtoAtual).getUsuarioID()));
+            btn1_lbContatoProprietario.setText(obtemContatoUsuario(lista.get(produtoAtual).getUsuarioID()));
+            btn1_lbCategoriaProduto.setText(obtemCategoria(lista.get(produtoAtual).getCategoriaID()));
+        }
+        
+    }
+    
+    public String obtemCategoria(int id)
+    {
+        String cat = "";
+
+            for(Categoria c : listaCategorias)
+            {
+                if(c.getCodigo() == id)
+                {
+                    cat = c.getDescricao();
+                    break;
+                }
+            }
+
+        return cat;
     }
     
     public String obtemNomeUsuario(int id)
@@ -185,6 +221,12 @@ public class PaginaUnica extends javax.swing.JFrame {
         lbNumTotalProdutos = new javax.swing.JLabel();
         navegarProdutoDireita = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
+        btn1_jLabel16 = new javax.swing.JLabel();
+        btn1_lbCategoriaProduto = new javax.swing.JLabel();
+        btnAlugarProduto = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        btnVerReputacao = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
         painelSuperior = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -194,6 +236,7 @@ public class PaginaUnica extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         bgTelaUnica.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -350,7 +393,7 @@ public class PaginaUnica extends javax.swing.JFrame {
         );
 
         jLabel1.setBackground(new java.awt.Color(240, 240, 240));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(240, 240, 240));
         jLabel1.setText("Fesa Share");
 
@@ -499,28 +542,28 @@ public class PaginaUnica extends javax.swing.JFrame {
         sidepanelTelaUnica.setLayout(sidepanelTelaUnicaLayout);
         sidepanelTelaUnicaLayout.setHorizontalGroup(
             sidepanelTelaUnicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidepanelTelaUnicaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(131, 131, 131))
             .addGroup(sidepanelTelaUnicaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(sidepanelTelaUnicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidepanelTelaUnicaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(129, 129, 129))
         );
         sidepanelTelaUnicaLayout.setVerticalGroup(
             sidepanelTelaUnicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidepanelTelaUnicaLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
+                .addGap(43, 43, 43)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -556,11 +599,11 @@ public class PaginaUnica extends javax.swing.JFrame {
         btn1ListaProdutosFoto.setLayout(btn1ListaProdutosFotoLayout);
         btn1ListaProdutosFotoLayout.setHorizontalGroup(
             btn1ListaProdutosFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 393, Short.MAX_VALUE)
+            .addGap(0, 397, Short.MAX_VALUE)
         );
         btn1ListaProdutosFotoLayout.setVerticalGroup(
             btn1ListaProdutosFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         btn1_jLabel17.setBackground(new java.awt.Color(240, 240, 240));
@@ -581,7 +624,7 @@ public class PaginaUnica extends javax.swing.JFrame {
         btn1_jLabel15.setBackground(new java.awt.Color(240, 240, 240));
         btn1_jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btn1_jLabel15.setForeground(new java.awt.Color(240, 240, 240));
-        btn1_jLabel15.setText("Valor diário:");
+        btn1_jLabel15.setText("Valor diário: R$");
 
         btn1_lbTituloProduto.setBackground(new java.awt.Color(240, 240, 240));
         btn1_lbTituloProduto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -651,16 +694,16 @@ public class PaginaUnica extends javax.swing.JFrame {
         btn1_navegarFotoEsquerda2Layout.setHorizontalGroup(
             btn1_navegarFotoEsquerda2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btn1_navegarFotoEsquerda2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(jLabel18)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         btn1_navegarFotoEsquerda2Layout.setVerticalGroup(
             btn1_navegarFotoEsquerda2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn1_navegarFotoEsquerda2Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn1_navegarFotoEsquerda2Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel18)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         btn1_jLabel13.setBackground(new java.awt.Color(240, 240, 240));
@@ -710,16 +753,16 @@ public class PaginaUnica extends javax.swing.JFrame {
         btn1_navegarFotoDireitaLayout.setHorizontalGroup(
             btn1_navegarFotoDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btn1_navegarFotoDireitaLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(17, 17, 17)
                 .addComponent(jLabel19)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         btn1_navegarFotoDireitaLayout.setVerticalGroup(
             btn1_navegarFotoDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn1_navegarFotoDireitaLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn1_navegarFotoDireitaLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel19)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         navegarProdutoEsquerda.setBackground(new java.awt.Color(64, 43, 100));
@@ -750,16 +793,16 @@ public class PaginaUnica extends javax.swing.JFrame {
         navegarProdutoEsquerdaLayout.setHorizontalGroup(
             navegarProdutoEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(navegarProdutoEsquerdaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addComponent(jLabel23)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         navegarProdutoEsquerdaLayout.setVerticalGroup(
             navegarProdutoEsquerdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(navegarProdutoEsquerdaLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navegarProdutoEsquerdaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel23)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jLabel24.setBackground(new java.awt.Color(240, 240, 240));
@@ -808,16 +851,104 @@ public class PaginaUnica extends javax.swing.JFrame {
         navegarProdutoDireitaLayout.setHorizontalGroup(
             navegarProdutoDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(navegarProdutoDireitaLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel27)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         navegarProdutoDireitaLayout.setVerticalGroup(
             navegarProdutoDireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(navegarProdutoDireitaLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navegarProdutoDireitaLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel27)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        btn1_jLabel16.setBackground(new java.awt.Color(240, 240, 240));
+        btn1_jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn1_jLabel16.setForeground(new java.awt.Color(240, 240, 240));
+        btn1_jLabel16.setText("Categoria:");
+
+        btn1_lbCategoriaProduto.setBackground(new java.awt.Color(240, 240, 240));
+        btn1_lbCategoriaProduto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn1_lbCategoriaProduto.setForeground(new java.awt.Color(240, 240, 240));
+        btn1_lbCategoriaProduto.setText("..");
+
+        btnAlugarProduto.setBackground(new java.awt.Color(64, 43, 100));
+        btnAlugarProduto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAlugarProduto.setMaximumSize(new java.awt.Dimension(52, 54));
+        btnAlugarProduto.setMinimumSize(new java.awt.Dimension(52, 54));
+        btnAlugarProduto.setName(""); // NOI18N
+        btnAlugarProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAlugarProdutoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAlugarProdutoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAlugarProdutoMouseExited(evt);
+            }
+        });
+
+        jLabel28.setBackground(new java.awt.Color(240, 240, 240));
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel28.setText("Alugar Produto");
+
+        javax.swing.GroupLayout btnAlugarProdutoLayout = new javax.swing.GroupLayout(btnAlugarProduto);
+        btnAlugarProduto.setLayout(btnAlugarProdutoLayout);
+        btnAlugarProdutoLayout.setHorizontalGroup(
+            btnAlugarProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnAlugarProdutoLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel28)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        btnAlugarProdutoLayout.setVerticalGroup(
+            btnAlugarProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnAlugarProdutoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel28)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnVerReputacao.setBackground(new java.awt.Color(64, 43, 100));
+        btnVerReputacao.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVerReputacao.setMaximumSize(new java.awt.Dimension(52, 54));
+        btnVerReputacao.setMinimumSize(new java.awt.Dimension(52, 54));
+        btnVerReputacao.setName(""); // NOI18N
+        btnVerReputacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVerReputacaoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVerReputacaoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVerReputacaoMouseExited(evt);
+            }
+        });
+
+        jLabel29.setBackground(new java.awt.Color(240, 240, 240));
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel29.setText("Ver Reputação do Locador");
+
+        javax.swing.GroupLayout btnVerReputacaoLayout = new javax.swing.GroupLayout(btnVerReputacao);
+        btnVerReputacao.setLayout(btnVerReputacaoLayout);
+        btnVerReputacaoLayout.setHorizontalGroup(
+            btnVerReputacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnVerReputacaoLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel29)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        btnVerReputacaoLayout.setVerticalGroup(
+            btnVerReputacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnVerReputacaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel29)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout painelListaGeralLayout = new javax.swing.GroupLayout(painelListaGeral);
@@ -825,33 +956,8 @@ public class PaginaUnica extends javax.swing.JFrame {
         painelListaGeralLayout.setHorizontalGroup(
             painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelListaGeralLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addContainerGap()
                 .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelListaGeralLayout.createSequentialGroup()
-                        .addComponent(btn1_navegarFotoEsquerda2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(btn1_jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn1_lbFotoAtual)
-                        .addGap(17, 17, 17)
-                        .addComponent(btn1_jLabel18)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn1_lbTotalFotos)
-                        .addGap(46, 46, 46)
-                        .addComponent(btn1_navegarFotoDireita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(112, 112, 112)
-                        .addComponent(navegarProdutoEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel24)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbNumProdutoAtual)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel25)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbNumTotalProdutos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(navegarProdutoDireita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
                     .addGroup(painelListaGeralLayout.createSequentialGroup()
                         .addComponent(btn1ListaProdutosFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -860,30 +966,70 @@ public class PaginaUnica extends javax.swing.JFrame {
                                 .addComponent(btn1_jLabel17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn1_lbTituloProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(painelListaGeralLayout.createSequentialGroup()
-                                .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelListaGeralLayout.createSequentialGroup()
-                                        .addComponent(btn1_jLabel21)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btn1_lbContatoProprietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btn1_jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn1_lbCategoriaProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(painelListaGeralLayout.createSequentialGroup()
+                                .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(painelListaGeralLayout.createSequentialGroup()
+                                            .addComponent(btn1_jLabel15)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(btn1_lbPrecoProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(painelListaGeralLayout.createSequentialGroup()
+                                            .addComponent(btn1_jLabel12)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(btn1_lbCondicoesProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelListaGeralLayout.createSequentialGroup()
+                                            .addComponent(btn1_jLabel14)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(btn1_lbDescricaoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelListaGeralLayout.createSequentialGroup()
+                                            .addComponent(btn1_jLabel21)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(btn1_lbContatoProprietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(painelListaGeralLayout.createSequentialGroup()
+                                            .addComponent(btn1_jLabel20)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(btn1_lbNomeProprietario, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelListaGeralLayout.createSequentialGroup()
+                                .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(painelListaGeralLayout.createSequentialGroup()
-                                        .addComponent(btn1_jLabel20)
+                                        .addGap(0, 19, Short.MAX_VALUE)
+                                        .addComponent(btnVerReputacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btn1_lbNomeProprietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(btnAlugarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(painelListaGeralLayout.createSequentialGroup()
-                                        .addComponent(btn1_jLabel15)
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(navegarProdutoEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel24)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lbNumProdutoAtual)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btn1_lbPrecoProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(painelListaGeralLayout.createSequentialGroup()
-                                        .addComponent(btn1_jLabel12)
+                                        .addComponent(jLabel25)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lbNumTotalProdutos)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btn1_lbCondicoesProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelListaGeralLayout.createSequentialGroup()
-                                        .addComponent(btn1_jLabel14)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btn1_lbDescricaoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 5, Short.MAX_VALUE))))))
+                                        .addComponent(navegarProdutoDireita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(38, 38, 38))))
+                    .addGroup(painelListaGeralLayout.createSequentialGroup()
+                        .addComponent(btn1_navegarFotoEsquerda2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(btn1_jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn1_lbFotoAtual)
+                        .addGap(17, 17, 17)
+                        .addComponent(btn1_jLabel18)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn1_lbTotalFotos)
+                        .addGap(46, 46, 46)
+                        .addComponent(btn1_navegarFotoDireita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, 0))
         );
         painelListaGeralLayout.setVerticalGroup(
             painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -891,7 +1037,6 @@ public class PaginaUnica extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelListaGeralLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
                         .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn1_jLabel17)
                             .addComponent(btn1_lbTituloProduto))
@@ -908,36 +1053,42 @@ public class PaginaUnica extends javax.swing.JFrame {
                             .addComponent(btn1_jLabel15)
                             .addComponent(btn1_lbPrecoProduto))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn1_jLabel20)
-                            .addComponent(btn1_lbNomeProprietario))
+                        .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn1_lbCategoriaProduto)
+                            .addComponent(btn1_jLabel16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn1_lbNomeProprietario)
+                            .addComponent(btn1_jLabel20))
                         .addGap(18, 18, 18)
                         .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn1_jLabel21)
-                            .addComponent(btn1_lbContatoProprietario)))
-                    .addComponent(btn1ListaProdutosFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btn1_lbContatoProprietario))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                        .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAlugarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVerReputacao, javax.swing.GroupLayout.PREFERRED_SIZE, 41, Short.MAX_VALUE)))
+                    .addComponent(btn1ListaProdutosFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn1_navegarFotoEsquerda2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn1_navegarFotoDireita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelListaGeralLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
                         .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn1_jLabel13)
                             .addComponent(btn1_lbFotoAtual)
                             .addComponent(btn1_jLabel18)
                             .addComponent(btn1_lbTotalFotos)))
-                    .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(navegarProdutoEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(navegarProdutoDireita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelListaGeralLayout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel24)
-                                .addComponent(lbNumProdutoAtual)
-                                .addComponent(jLabel25)
-                                .addComponent(lbNumTotalProdutos)))))
-                .addContainerGap(83, Short.MAX_VALUE))
+                    .addGroup(painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(navegarProdutoDireita, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelListaGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(lbNumProdutoAtual)
+                            .addComponent(jLabel25)
+                            .addComponent(lbNumTotalProdutos))
+                        .addComponent(navegarProdutoEsquerda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn1_navegarFotoEsquerda2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn1_navegarFotoDireita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout monitorExibicaoLayout = new javax.swing.GroupLayout(monitorExibicao);
@@ -1154,13 +1305,13 @@ public class PaginaUnica extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel8MouseExited
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        lbTituloDaTela.setText("Lista de Produtos Geral");
+        lbTituloDaTela.setText("Bem vindo " + DadosEstaticos.usuarioLogado.getNome()+" Lista de Produtos Geral");
         painelListaGeral.setVisible(true);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
         // TODO add your handling code here:
-        lbTituloDaTela.setText("Lista de Produtos do Usuário");
+        lbTituloDaTela.setText("Lista de Produtos do Usuário " + DadosEstaticos.usuarioLogado.getNome());
         painelListaGeral.setVisible(false);
     }//GEN-LAST:event_jPanel2MouseClicked
 
@@ -1192,7 +1343,7 @@ public class PaginaUnica extends javax.swing.JFrame {
     }//GEN-LAST:event_navegarProdutoEsquerdaMouseEntered
 
     private void navegarProdutoEsquerdaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_navegarProdutoEsquerdaMouseClicked
-        if(produtoAtual > 1)
+        if(produtoAtual >= 1)
             produtoAtual--; 
         
         lbNumProdutoAtual.setText(Integer.toString(produtoAtual));
@@ -1227,6 +1378,32 @@ public class PaginaUnica extends javax.swing.JFrame {
     private void btn1_navegarFotoEsquerdaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn1_navegarFotoEsquerdaMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btn1_navegarFotoEsquerdaMouseClicked
+
+    private void btnAlugarProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlugarProdutoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlugarProdutoMouseClicked
+
+    private void btnAlugarProdutoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlugarProdutoMouseEntered
+        setColor(btnAlugarProduto);       // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlugarProdutoMouseEntered
+
+    private void btnAlugarProdutoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlugarProdutoMouseExited
+        resetColor(btnAlugarProduto);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlugarProdutoMouseExited
+
+    private void btnVerReputacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerReputacaoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVerReputacaoMouseClicked
+
+    private void btnVerReputacaoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerReputacaoMouseEntered
+         setColor(btnVerReputacao);        
+    }//GEN-LAST:event_btnVerReputacaoMouseEntered
+
+    private void btnVerReputacaoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerReputacaoMouseExited
+        // TODO add your handling code here:
+        resetColor(btnVerReputacao);
+    }//GEN-LAST:event_btnVerReputacaoMouseExited
  
     /**
      * @param args the command line arguments
@@ -1270,10 +1447,12 @@ public class PaginaUnica extends javax.swing.JFrame {
     private javax.swing.JLabel btn1_jLabel13;
     private javax.swing.JLabel btn1_jLabel14;
     private javax.swing.JLabel btn1_jLabel15;
+    private javax.swing.JLabel btn1_jLabel16;
     private javax.swing.JLabel btn1_jLabel17;
     private javax.swing.JLabel btn1_jLabel18;
     private javax.swing.JLabel btn1_jLabel20;
     private javax.swing.JLabel btn1_jLabel21;
+    private javax.swing.JLabel btn1_lbCategoriaProduto;
     private javax.swing.JLabel btn1_lbCondicoesProduto;
     private javax.swing.JLabel btn1_lbContatoProprietario;
     private javax.swing.JLabel btn1_lbDescricaoProduto;
@@ -1286,6 +1465,8 @@ public class PaginaUnica extends javax.swing.JFrame {
     private javax.swing.JPanel btn1_navegarFotoEsquerda;
     private javax.swing.JPanel btn1_navegarFotoEsquerda1;
     private javax.swing.JPanel btn1_navegarFotoEsquerda2;
+    private javax.swing.JPanel btnAlugarProduto;
+    private javax.swing.JPanel btnVerReputacao;
     private javax.swing.JComboBox<String> cbCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1301,6 +1482,8 @@ public class PaginaUnica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
