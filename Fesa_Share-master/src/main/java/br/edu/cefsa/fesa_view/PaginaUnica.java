@@ -65,7 +65,7 @@ public class PaginaUnica extends javax.swing.JFrame {
                         atualizaDadosListaProdutos();
                     }
 
-                    listaPorUsuario = prodDAO.listarPorUsuario(DadosEstaticos.usuarioLogado.getCodigo());
+                    //listaPorUsuario = prodDAO.listarPorUsuario(DadosEstaticos.usuarioLogado.getCodigo());
 
 
                 } catch (PersistenciaException ex) {
@@ -187,7 +187,8 @@ public class PaginaUnica extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        btnSolicitacoes = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         monitorExibicao = new javax.swing.JPanel();
@@ -481,26 +482,40 @@ public class PaginaUnica extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setBackground(new java.awt.Color(240, 240, 240));
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel8.setText("Preciso de Ajuda");
+        btnSolicitacoes.setBackground(new java.awt.Color(240, 240, 240));
+        btnSolicitacoes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnSolicitacoes.setForeground(new java.awt.Color(240, 240, 240));
+        btnSolicitacoes.setText("Solicitações");
+        btnSolicitacoes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSolicitacoesMouseClicked(evt);
+            }
+        });
+
+        jLabel12.setBackground(new java.awt.Color(240, 240, 240));
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel12.setText("Preciso de Ajuda");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+            .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSolicitacoes, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel8)
-                .addGap(15, 15, 15))
+                .addContainerGap()
+                .addComponent(btnSolicitacoes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addGap(7, 7, 7))
         );
 
         jPanel8.setBackground(new java.awt.Color(64, 43, 100));
@@ -1125,7 +1140,6 @@ public class PaginaUnica extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(240, 240, 240));
         jLabel22.setText("Selecionar Categoria:");
 
-        cbCategoria.setBackground(new java.awt.Color(255, 255, 255));
         cbCategoria.setEditable(true);
         cbCategoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbCategoria.setForeground(new java.awt.Color(124, 93, 176));
@@ -1404,6 +1418,10 @@ public class PaginaUnica extends javax.swing.JFrame {
         // TODO add your handling code here:
         resetColor(btnVerReputacao);
     }//GEN-LAST:event_btnVerReputacaoMouseExited
+
+    private void btnSolicitacoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSolicitacoesMouseClicked
+        
+    }//GEN-LAST:event_btnSolicitacoesMouseClicked
  
     /**
      * @param args the command line arguments
@@ -1462,17 +1480,15 @@ public class PaginaUnica extends javax.swing.JFrame {
     private javax.swing.JLabel btn1_lbTituloProduto;
     private javax.swing.JLabel btn1_lbTotalFotos;
     private javax.swing.JPanel btn1_navegarFotoDireita;
-    private javax.swing.JPanel btn1_navegarFotoEsquerda;
-    private javax.swing.JPanel btn1_navegarFotoEsquerda1;
     private javax.swing.JPanel btn1_navegarFotoEsquerda2;
     private javax.swing.JPanel btnAlugarProduto;
+    private javax.swing.JLabel btnSolicitacoes;
     private javax.swing.JPanel btnVerReputacao;
     private javax.swing.JComboBox<String> cbCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -1480,7 +1496,6 @@ public class PaginaUnica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -1488,10 +1503,8 @@ public class PaginaUnica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

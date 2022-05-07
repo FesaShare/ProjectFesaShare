@@ -172,5 +172,75 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
         return e;
     }
     
+    public Pedido listarPorLocatario(Pedido e) throws PersistenciaException {
+        String sql = "WITH added_row_number AS (" +
+                    "SELECT *, ROW_NUMBER() OVER(PARTITION BY PRODUTOID ORDER BY DATAPEDIDO ASC) AS" +
+                    "row_number" +
+                    "FROM PEDIDO" +
+                    ")" +
+                    "SELECT PedidoID, ProdutoID, LocatarioID, LocadorID, PrecoAluguel, " +
+                    "PagamentoID, DataPedido, DataPrevistaInicio, DataPrevistaFim" +
+                    "FROM added_row_number" +
+                    "WHERE row_number =1 AND LocatarioID = ?";
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setInt(1, e.getLocatario().getCodigo());
+            ResultSet result = pStatement.executeQuery();
+            if (result.next()) {
+                e.setCodigo(result.getInt("SolicitacaoID"));
+                e.setDataPedido(result.getString("DataPedido"));
+                e.setPrecoAluguel(result.getFloat("PrecoAluguel"));
+                
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SolicitacaoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SolicitacaoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SolicitacaoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return e;
+    }
     
+    public Pedido listarPorLocador(Pedido e) throws PersistenciaException {
+        String sql = "WITH added_row_number AS (" +
+                    "SELECT *, ROW_NUMBER() OVER(PARTITION BY PRODUTOID ORDER BY DATAPEDIDO ASC) AS" +
+                    "row_number" +
+                    "FROM PEDIDO" +
+                    ")" +
+                    "SELECT PedidoID, ProdutoID, LocatarioID, LocadorID, PrecoAluguel, " +
+                    "PagamentoID, DataPedido, DataPrevistaInicio, DataPrevistaFim" +
+                    "FROM added_row_number" +
+                    "WHERE row_number =1 AND LocadorID = ?";
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setInt(1, e.getLocador().getCodigo());
+            ResultSet result = pStatement.executeQuery();
+            if (result.next()) {
+                e.setCodigo(result.getInt("SolicitacaoID"));
+                e.setDataPedido(result.getString("DataPedido"));
+                e.setPrecoAluguel(result.getFloat("PrecoAluguel"));
+                
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SolicitacaoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SolicitacaoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SolicitacaoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return e;
+    }
 }

@@ -167,6 +167,5 @@ public class SolicitacaoDAO implements GenericoDAO<Solicitacao> {
         }
         return e;
     }
-    
-    
+   
 }
