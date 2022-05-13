@@ -24,7 +24,7 @@ public class Publicacoes extends javax.swing.JFrame {
     public Publicacoes() {
         initComponents();
         ProdutoDAO prodDAO = new ProdutoDAO();
-        List<Produto> lista;
+        /*List<Produto> lista;
         try {
             lista = prodDAO.listarPorUsuario(DadosEstaticos.usuarioLogado.getCodigo());
             lbQtdProdutos.setText(Integer.toString(lista.size()));
@@ -36,7 +36,7 @@ public class Publicacoes extends javax.swing.JFrame {
             
         } catch (PersistenciaException ex) {
             Logger.getLogger(Publicacoes.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         
         
         

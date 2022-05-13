@@ -210,6 +210,7 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
                 Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
         return e;
     }
     
