@@ -70,7 +70,7 @@
                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                       <Component id="lbTeste" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="183" max="32767" attributes="0"/>
+                      <EmptySpace pref="184" max="32767" attributes="0"/>
                       <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbPagAtual" min="-2" max="-2" attributes="0"/>
@@ -99,7 +99,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="888" max="32767" attributes="0"/>
+                  <EmptySpace pref="889" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -189,13 +189,13 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jButton8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                           <Component id="jButton16" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jButton17" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="jButton8" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               </Group>
@@ -297,6 +297,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Sobre"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton17">
           <Properties>
@@ -856,7 +859,6 @@
                       <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jButton5" alignment="1" max="32767" attributes="0"/>
                       <Component id="jButton7" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButton12" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButton13" alignment="0" max="32767" attributes="0"/>
@@ -877,8 +879,6 @@
                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jButton4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -921,14 +921,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Solicita&#xe7;&#xf5;es"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="jButton7">
           <Properties>
             <Property name="text" type="java.lang.String" value="Minha Reputa&#xe7;&#xe3;o"/>
@@ -955,7 +947,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton14">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Politicas de encerramento"/>
+            <Property name="text" type="java.lang.String" value="Politicas de cancelamento"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton14ActionPerformed"/>
