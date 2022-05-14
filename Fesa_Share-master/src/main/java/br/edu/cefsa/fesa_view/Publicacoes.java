@@ -47,14 +47,18 @@ public class Publicacoes extends javax.swing.JFrame {
             
             if(meusProdutos)
             {
-                lista = prodDAO.listar();
-                lbTeste.setText("Sem filtro");
+                lista.clear();
+                lista = prodDAO.listarPorUsuario(DadosEstaticos.usuarioLogado.getCodigo());
+                lbTeste.setText("Com filtro");
+                txtPub.setText("Minhas Publicações");
                 atualizaDadosListaProdutos();
             }
             else
             {
-                lista = prodDAO.listarPorUsuario(DadosEstaticos.usuarioLogado.getCodigo());
-                lbTeste.setText("Com filtro");
+                lista.clear();
+                lista = prodDAO.listar();
+                lbTeste.setText("Sem filtro");
+                txtPub.setText("Todas as publicações");
                 atualizaDadosListaProdutos();
             }
                 
@@ -71,7 +75,7 @@ public class Publicacoes extends javax.swing.JFrame {
     {
          numPag = Math.round(lista.size() / 3);
             if(lista.size() % 3 > 0)
-                numPag++;
+                numPag = numPag + 1;
             lbNumPag.setText(Integer.toString(numPag));
 
         lbPagAtual.setText(Integer.toString(pagAtual));
@@ -115,6 +119,23 @@ public class Publicacoes extends javax.swing.JFrame {
 
         }
         
+        if(lista.size() == 0)
+        {
+            lbProduto1.setText("");
+            lbDescricao1.setText("");
+            lbCondicao1.setText("");
+            lbPreco1.setText("");
+            lbProduto2.setText("");
+            lbDescricao2.setText("");
+            lbCondicao2.setText("");
+            lbPreco2.setText("");
+            lbProduto3.setText("");
+            lbDescricao3.setText("");
+            lbCondicao3.setText("");
+            lbPreco3.setText("");
+            txtPub.setText("Você não tem nenhuma publicação");
+        }
+        
     }
 
     /**
@@ -138,6 +159,7 @@ public class Publicacoes extends javax.swing.JFrame {
         jButton16 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
+        txtPub = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -181,6 +203,7 @@ public class Publicacoes extends javax.swing.JFrame {
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         lbTeste = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
@@ -246,7 +269,7 @@ public class Publicacoes extends javax.swing.JFrame {
         );
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel12.setText("Publicações");
+        jLabel12.setText("Publicações:");
 
         jButton16.setText("Quem Somos");
 
@@ -264,6 +287,9 @@ public class Publicacoes extends javax.swing.JFrame {
             }
         });
 
+        txtPub.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtPub.setText("..");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -275,6 +301,8 @@ public class Publicacoes extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel12)
+                        .addGap(29, 29, 29)
+                        .addComponent(txtPub)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -305,7 +333,9 @@ public class Publicacoes extends javax.swing.JFrame {
                                     .addComponent(jButton8))
                                 .addGap(16, 16, 16))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel12)
+                                    .addComponent(txtPub))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -681,6 +711,13 @@ public class Publicacoes extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("Ver Todas as Publicações");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -696,7 +733,8 @@ public class Publicacoes extends javax.swing.JFrame {
                     .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -706,6 +744,8 @@ public class Publicacoes extends javax.swing.JFrame {
                 .addComponent(jButton9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -817,26 +857,20 @@ public class Publicacoes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        if(lista.size() < produtoAtual + 3)
+        if(lista.size() > produtoAtual + 3)
         {
             produtoAtual = produtoAtual + 3;
-            pagAtual++;
+            if(pagAtual < numPag)
+                pagAtual++;
         }
-        else if(lista.size() < produtoAtual + 2)
+        else if(lista.size() > produtoAtual + 2)
         {
             produtoAtual = produtoAtual + 2;
-            pagAtual++;
+            if(pagAtual < numPag)
+                pagAtual++;
         }
-        else if(lista.size() < produtoAtual + 1)
-        {
-            produtoAtual = produtoAtual + 1;
-            pagAtual++;
-        }
-            
         
-        
-        
-        atualizaDadosListaProdutos();
+        carregaListaProdutos();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -846,7 +880,7 @@ public class Publicacoes extends javax.swing.JFrame {
     //Minhas publicações
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         meusProdutos = true;
-        
+        carregaListaProdutos();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -856,16 +890,19 @@ public class Publicacoes extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Historico pgHistorico = new Historico();
         pgHistorico.setVisible(true);
+        Publicacoes.this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         Reputacao pgReputacao = new Reputacao();
         pgReputacao.setVisible(true);
+        Publicacoes.this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         PoliticasDeFila pgFila = new PoliticasDeFila();
         pgFila.setVisible(true);
+        Publicacoes.this.dispose();
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -876,6 +913,7 @@ public class Publicacoes extends javax.swing.JFrame {
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         PoliticasDeCancelamento pgCancela = new PoliticasDeCancelamento();
         pgCancela.setVisible(true);
+
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -891,13 +929,18 @@ public class Publicacoes extends javax.swing.JFrame {
         if(produtoAtual - 3 > 0)
         {
             produtoAtual = produtoAtual - 3;
-            pagAtual--;
+            if(pagAtual > 0)
+                pagAtual--;
+        }
+        else if(produtoAtual - 2 > 0)
+        {
+            produtoAtual = produtoAtual - 2;
+            if(pagAtual > 0)
+                pagAtual--;
         }
             
-        else
-            produtoAtual = 0;
         
-        atualizaDadosListaProdutos();
+        carregaListaProdutos();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
@@ -919,6 +962,11 @@ public class Publicacoes extends javax.swing.JFrame {
         Sobre pgSobre = new Sobre();
         pgSobre.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        meusProdutos = false;
+        carregaListaProdutos();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -972,6 +1020,7 @@ public class Publicacoes extends javax.swing.JFrame {
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -1012,5 +1061,6 @@ public class Publicacoes extends javax.swing.JFrame {
     private javax.swing.JLabel lbQtdProdutos;
     private javax.swing.JLabel lbTeste;
     private javax.swing.JTextField txtBuscarProduto;
+    private javax.swing.JLabel txtPub;
     // End of variables declaration//GEN-END:variables
 }
