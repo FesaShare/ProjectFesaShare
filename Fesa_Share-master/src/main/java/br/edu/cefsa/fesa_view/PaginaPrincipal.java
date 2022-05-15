@@ -79,17 +79,28 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1050, 750));
         setResizable(false);
 
+        bgPanel.setBackground(new java.awt.Color(40, 40, 40));
+        bgPanel.setForeground(new java.awt.Color(40, 40, 40));
         bgPanel.setMaximumSize(new java.awt.Dimension(2000, 2000));
         bgPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         bgPanel.setName("Pagina Principal"); // NOI18N
         bgPanel.setPreferredSize(new java.awt.Dimension(1000, 640));
 
+        txtBuscarProduto.setBackground(new java.awt.Color(70, 70, 70));
         txtBuscarProduto.setText("Buscar");
 
+        jPanel2.setBackground(new java.awt.Color(40, 40, 40));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setForeground(new java.awt.Color(40, 40, 40));
 
+        jButton1.setBackground(new java.awt.Color(60, 60, 60));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(220, 220, 220));
         jButton1.setText("Esporte e Lazer");
 
+        jButton2.setBackground(new java.awt.Color(60, 60, 60));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(220, 220, 220));
         jButton2.setText("Eletrônicos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,10 +108,19 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(60, 60, 60));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(220, 220, 220));
         jButton3.setText("Livros");
 
+        jButton4.setBackground(new java.awt.Color(60, 60, 60));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(220, 220, 220));
         jButton4.setText("Instrumentos Musicais");
 
+        jLabel8.setBackground(new java.awt.Color(187, 187, 187));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(220, 220, 220));
         jLabel8.setText("Categorias mais buscadas");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -136,9 +156,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setBackground(java.awt.SystemColor.controlHighlight);
+        jPanel3.setBackground(new java.awt.Color(40, 40, 40));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.setForeground(new java.awt.Color(40, 40, 40));
 
+        jButton9.setBackground(new java.awt.Color(60, 60, 60));
+        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(220, 220, 220));
         jButton9.setText("Arduíno Uno");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +170,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton10.setBackground(new java.awt.Color(60, 60, 60));
+        jButton10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(220, 220, 220));
         jButton10.setText("Violão");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +180,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton11.setBackground(new java.awt.Color(60, 60, 60));
+        jButton11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(220, 220, 220));
         jButton11.setText("Patins");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +190,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton12.setBackground(new java.awt.Color(60, 60, 60));
+        jButton12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(220, 220, 220));
         jButton12.setText("Chuteiras");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +200,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton13.setBackground(new java.awt.Color(60, 60, 60));
+        jButton13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(220, 220, 220));
         jButton13.setText("Servo Motor");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +210,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton14.setBackground(new java.awt.Color(60, 60, 60));
+        jButton14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton14.setForeground(new java.awt.Color(220, 220, 220));
         jButton14.setText("Livro Compiladores");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +220,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton15.setBackground(new java.awt.Color(60, 60, 60));
+        jButton15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton15.setForeground(new java.awt.Color(220, 220, 220));
         jButton15.setText("Kit Eletrônica");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,6 +230,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton16.setBackground(new java.awt.Color(60, 60, 60));
+        jButton16.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton16.setForeground(new java.awt.Color(220, 220, 220));
         jButton16.setText("Livro Cálculo");
         jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,6 +240,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton17.setBackground(new java.awt.Color(60, 60, 60));
+        jButton17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton17.setForeground(new java.awt.Color(220, 220, 220));
         jButton17.setText("Saxofone");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,6 +250,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton18.setBackground(new java.awt.Color(60, 60, 60));
+        jButton18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton18.setForeground(new java.awt.Color(220, 220, 220));
         jButton18.setText("Bola de Futebol");
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,11 +305,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(java.awt.SystemColor.controlHighlight);
+        jPanel4.setBackground(new java.awt.Color(40, 40, 40));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel4.setForeground(new java.awt.Color(40, 40, 40));
 
+        jButton19.setBackground(new java.awt.Color(60, 60, 60));
+        jButton19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton19.setForeground(new java.awt.Color(220, 220, 220));
         jButton19.setText("Chat");
 
+        jButton20.setBackground(new java.awt.Color(60, 60, 60));
+        jButton20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton20.setForeground(new java.awt.Color(220, 220, 220));
         jButton20.setText("Publicações");
         jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,6 +324,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton21.setBackground(new java.awt.Color(60, 60, 60));
+        jButton21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton21.setForeground(new java.awt.Color(220, 220, 220));
         jButton21.setText("Solicitações");
         jButton21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,10 +334,24 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton22.setBackground(new java.awt.Color(60, 60, 60));
+        jButton22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton22.setForeground(new java.awt.Color(220, 220, 220));
         jButton22.setText("Histórico");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
 
+        jButton23.setBackground(new java.awt.Color(60, 60, 60));
+        jButton23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton23.setForeground(new java.awt.Color(220, 220, 220));
         jButton23.setText("Minha Reputação");
 
+        jButton24.setBackground(new java.awt.Color(60, 60, 60));
+        jButton24.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton24.setForeground(new java.awt.Color(220, 220, 220));
         jButton24.setText("Politicas de Fila");
         jButton24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,8 +359,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton25.setBackground(new java.awt.Color(60, 60, 60));
+        jButton25.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton25.setForeground(new java.awt.Color(220, 220, 220));
         jButton25.setText("Politicas de Devolução");
 
+        jButton26.setBackground(new java.awt.Color(60, 60, 60));
+        jButton26.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton26.setForeground(new java.awt.Color(220, 220, 220));
         jButton26.setText("Politicas de Cancelamento");
         jButton26.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,6 +374,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton27.setBackground(new java.awt.Color(60, 60, 60));
+        jButton27.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton27.setForeground(new java.awt.Color(220, 220, 220));
         jButton27.setText("Preciso de Ajuda");
         jButton27.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,6 +384,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton28.setBackground(new java.awt.Color(60, 60, 60));
+        jButton28.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton28.setForeground(new java.awt.Color(220, 220, 220));
         jButton28.setText("Nos avalie");
         jButton28.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -352,6 +439,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton5.setBackground(new java.awt.Color(60, 60, 60));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(220, 220, 220));
         jButton5.setText("Alugue já!");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,6 +449,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setBackground(new java.awt.Color(60, 60, 60));
+        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(220, 220, 220));
         jButton6.setText("Sobre");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -366,6 +459,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setBackground(new java.awt.Color(60, 60, 60));
+        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(220, 220, 220));
         jButton7.setText("Quem Somos");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -373,6 +469,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setBackground(new java.awt.Color(60, 60, 60));
+        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(220, 220, 220));
         jButton8.setText("Sair");
         jButton8.setToolTipText("");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -381,8 +480,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jPanel11.setBackground(java.awt.SystemColor.controlHighlight);
-        jPanel11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel11.setBackground(new java.awt.Color(40, 40, 40));
+        jPanel11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel11.setForeground(new java.awt.Color(40, 40, 40));
 
         jLabel5.setText("Imagem principal");
 
@@ -403,9 +503,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel7.setBackground(java.awt.SystemColor.controlHighlight);
-        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
+        jPanel7.setBackground(new java.awt.Color(40, 40, 40));
+        jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel7.setForeground(new java.awt.Color(40, 40, 40));
 
+        jLabel6.setForeground(new java.awt.Color(220, 220, 220));
         jLabel6.setText("Imagem Logo");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -427,15 +529,29 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jLabel6.getAccessibleContext().setAccessibleDescription("");
 
+        jLabel7.setBackground(new java.awt.Color(187, 187, 187));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(220, 220, 220));
         jLabel7.setText("Bem vindo ao Fesa Share");
 
+        jButton29.setBackground(new java.awt.Color(60, 60, 60));
+        jButton29.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton29.setForeground(new java.awt.Color(220, 220, 220));
         jButton29.setText("Buscar");
         jButton29.setToolTipText("");
 
+        lbUsuario.setBackground(new java.awt.Color(187, 187, 187));
+        lbUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbUsuario.setForeground(new java.awt.Color(220, 220, 220));
         lbUsuario.setText("...");
 
+        jLabel9.setBackground(new java.awt.Color(187, 187, 187));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(220, 220, 220));
         jLabel9.setText("Produtos mais buscados");
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(220, 220, 220));
         jLabel10.setText("Ações");
 
         javax.swing.GroupLayout bgPanelLayout = new javax.swing.GroupLayout(bgPanel);
@@ -467,7 +583,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                             .addGroup(bgPanelLayout.createSequentialGroup()
                                 .addComponent(txtBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(22, 22, 22)
-                                .addComponent(jButton29, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                                .addComponent(jButton29, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
                             .addGroup(bgPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -520,7 +636,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -652,6 +768,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        Historico pgHis = new Historico();
+        pgHis.setVisible(true);
+    }//GEN-LAST:event_jButton22ActionPerformed
 
     /**
      * @param args the command line arguments

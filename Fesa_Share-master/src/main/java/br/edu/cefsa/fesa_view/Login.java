@@ -49,34 +49,58 @@ public class Login extends javax.swing.JFrame {
         btnCadastrarUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(40, 40, 40));
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(40, 40, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(220, 220, 220));
         jLabel1.setText("Bem vindo ao Fesa Share");
 
+        jPanel2.setBackground(new java.awt.Color(40, 40, 40));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel2.setForeground(new java.awt.Color(220, 220, 220));
         jLabel2.setText("Usuario");
 
+        jLabel3.setForeground(new java.awt.Color(220, 220, 220));
         jLabel3.setText("Senha");
 
+        txtUsuario.setBackground(new java.awt.Color(70, 70, 70));
+        txtUsuario.setForeground(new java.awt.Color(220, 220, 220));
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setText("Acessar o Fesa Share");
+        txtSenha.setBackground(new java.awt.Color(70, 70, 70));
+        txtSenha.setForeground(new java.awt.Color(220, 220, 220));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(220, 220, 220));
+        jLabel4.setText("Faça Login");
+
+        btnEntrar.setBackground(new java.awt.Color(60, 60, 60));
+        btnEntrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEntrar.setForeground(new java.awt.Color(220, 220, 220));
         btnEntrar.setText("Entrar");
+        btnEntrar.setSelected(true);
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
             }
         });
 
+        btnEsqueciSenha.setBackground(new java.awt.Color(60, 60, 60));
+        btnEsqueciSenha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEsqueciSenha.setForeground(new java.awt.Color(220, 220, 220));
         btnEsqueciSenha.setText("Esqueci a Senha");
 
+        btnCadastrarUsuario.setBackground(new java.awt.Color(60, 60, 60));
+        btnCadastrarUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCadastrarUsuario.setForeground(new java.awt.Color(220, 220, 220));
         btnCadastrarUsuario.setText("Não tenho Cadastro");
         btnCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,11 +128,12 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(txtSenha)
-                            .addComponent(txtUsuario))))
+                            .addComponent(txtUsuario)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(jLabel4)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -150,24 +175,18 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
