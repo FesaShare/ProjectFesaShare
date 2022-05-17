@@ -76,16 +76,24 @@ public class PaginaProduto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        bgPanel.setBackground(new java.awt.Color(40, 40, 40));
         bgPanel.setMaximumSize(new java.awt.Dimension(2000, 2000));
         bgPanel.setName("Pagina Principal"); // NOI18N
         bgPanel.setPreferredSize(new java.awt.Dimension(1000, 640));
 
+        txtBuscarProduto.setBackground(new java.awt.Color(70, 70, 70));
+        txtBuscarProduto.setForeground(new java.awt.Color(220, 220, 220));
         txtBuscarProduto.setText("Buscar");
 
+        jPanel2.setBackground(new java.awt.Color(40, 40, 40));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jButton1.setBackground(new java.awt.Color(60, 60, 60));
+        jButton1.setForeground(new java.awt.Color(220, 220, 220));
         jButton1.setText("Esporte e Lazer");
 
+        jButton2.setBackground(new java.awt.Color(60, 60, 60));
+        jButton2.setForeground(new java.awt.Color(220, 220, 220));
         jButton2.setText("Eletrônicos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,10 +101,15 @@ public class PaginaProduto extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(60, 60, 60));
+        jButton3.setForeground(new java.awt.Color(220, 220, 220));
         jButton3.setText("Livros");
 
+        jButton4.setBackground(new java.awt.Color(60, 60, 60));
+        jButton4.setForeground(new java.awt.Color(220, 220, 220));
         jButton4.setText("Instrumentos Musicais");
 
+        jLabel8.setForeground(new java.awt.Color(220, 220, 220));
         jLabel8.setText("Categorias mais buscadas");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -132,6 +145,8 @@ public class PaginaProduto extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton5.setBackground(new java.awt.Color(60, 60, 60));
+        jButton5.setForeground(new java.awt.Color(220, 220, 220));
         jButton5.setText("Alugue já!");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,10 +154,16 @@ public class PaginaProduto extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setBackground(new java.awt.Color(60, 60, 60));
+        jButton6.setForeground(new java.awt.Color(220, 220, 220));
         jButton6.setText("Sobre");
 
+        jButton7.setBackground(new java.awt.Color(60, 60, 60));
+        jButton7.setForeground(new java.awt.Color(220, 220, 220));
         jButton7.setText("Quem Somos");
 
+        jButton8.setBackground(new java.awt.Color(60, 60, 60));
+        jButton8.setForeground(new java.awt.Color(220, 220, 220));
         jButton8.setText("Sair");
         jButton8.setToolTipText("");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +172,7 @@ public class PaginaProduto extends javax.swing.JFrame {
             }
         });
 
-        jPanel7.setBackground(java.awt.SystemColor.controlHighlight);
+        jPanel7.setBackground(new java.awt.Color(40, 40, 40));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
 
         jLabel6.setText("Imagem Logo");
@@ -173,15 +194,21 @@ public class PaginaProduto extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel7.setForeground(new java.awt.Color(220, 220, 220));
         jLabel7.setText("Bem vindo ao Fesa Share");
 
+        jButton29.setBackground(new java.awt.Color(60, 60, 60));
+        jButton29.setForeground(new java.awt.Color(220, 220, 220));
         jButton29.setText("Buscar");
         jButton29.setToolTipText("");
 
+        lbUsuario.setForeground(new java.awt.Color(220, 220, 220));
         lbUsuario.setText("...");
 
+        jLabel9.setForeground(new java.awt.Color(220, 220, 220));
         jLabel9.setText("Página do Produto");
 
+        jPanel1.setBackground(new java.awt.Color(40, 40, 40));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -195,8 +222,11 @@ public class PaginaProduto extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jPanel3.setBackground(new java.awt.Color(40, 40, 40));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jButton9.setBackground(new java.awt.Color(60, 60, 60));
+        jButton9.setForeground(new java.awt.Color(220, 220, 220));
         jButton9.setText("Ver Reputação do Locatário");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,6 +234,8 @@ public class PaginaProduto extends javax.swing.JFrame {
             }
         });
 
+        jButton10.setBackground(new java.awt.Color(60, 60, 60));
+        jButton10.setForeground(new java.awt.Color(220, 220, 220));
         jButton10.setText("Chat");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,6 +243,8 @@ public class PaginaProduto extends javax.swing.JFrame {
             }
         });
 
+        jButton11.setBackground(new java.awt.Color(60, 60, 60));
+        jButton11.setForeground(new java.awt.Color(220, 220, 220));
         jButton11.setText("Histórico");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,6 +252,8 @@ public class PaginaProduto extends javax.swing.JFrame {
             }
         });
 
+        jButton12.setBackground(new java.awt.Color(60, 60, 60));
+        jButton12.setForeground(new java.awt.Color(220, 220, 220));
         jButton12.setText("Solicitações");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,6 +261,8 @@ public class PaginaProduto extends javax.swing.JFrame {
             }
         });
 
+        jButton13.setBackground(new java.awt.Color(60, 60, 60));
+        jButton13.setForeground(new java.awt.Color(220, 220, 220));
         jButton13.setText("Minha Reputação");
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,6 +270,8 @@ public class PaginaProduto extends javax.swing.JFrame {
             }
         });
 
+        jButton14.setBackground(new java.awt.Color(60, 60, 60));
+        jButton14.setForeground(new java.awt.Color(220, 220, 220));
         jButton14.setText("Politicas de fila");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,6 +279,8 @@ public class PaginaProduto extends javax.swing.JFrame {
             }
         });
 
+        jButton15.setBackground(new java.awt.Color(60, 60, 60));
+        jButton15.setForeground(new java.awt.Color(220, 220, 220));
         jButton15.setText("Politicas de devolução");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,6 +288,8 @@ public class PaginaProduto extends javax.swing.JFrame {
             }
         });
 
+        jButton16.setBackground(new java.awt.Color(60, 60, 60));
+        jButton16.setForeground(new java.awt.Color(220, 220, 220));
         jButton16.setText("Politicas de encerramento");
         jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,6 +297,8 @@ public class PaginaProduto extends javax.swing.JFrame {
             }
         });
 
+        jButton17.setBackground(new java.awt.Color(60, 60, 60));
+        jButton17.setForeground(new java.awt.Color(220, 220, 220));
         jButton17.setText("Encerrar conta");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,6 +306,8 @@ public class PaginaProduto extends javax.swing.JFrame {
             }
         });
 
+        jButton18.setBackground(new java.awt.Color(60, 60, 60));
+        jButton18.setForeground(new java.awt.Color(220, 220, 220));
         jButton18.setText("Solicitar Empréstimo");
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -312,46 +360,59 @@ public class PaginaProduto extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel4.setBackground(new java.awt.Color(40, 40, 40));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbProduto1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbProduto1.setForeground(new java.awt.Color(220, 220, 220));
         lbProduto1.setText("Produto:");
 
         lbPreco1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPreco1.setForeground(new java.awt.Color(220, 220, 220));
         lbPreco1.setText("Preço:");
 
         lbPreco2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPreco2.setForeground(new java.awt.Color(220, 220, 220));
         lbPreco2.setText("Status:");
 
         lbPreco4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPreco4.setForeground(new java.awt.Color(220, 220, 220));
         lbPreco4.setText("Detalhes:");
 
         lbPreco3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPreco3.setForeground(new java.awt.Color(220, 220, 220));
         lbPreco3.setText("Tempo de Uso:");
 
-        txtDescricao.setBackground(new java.awt.Color(187, 187, 187));
+        txtDescricao.setBackground(new java.awt.Color(40, 40, 40));
         txtDescricao.setColumns(20);
+        txtDescricao.setForeground(new java.awt.Color(220, 220, 220));
         txtDescricao.setRows(5);
         jScrollPane1.setViewportView(txtDescricao);
 
-        txtCondicao.setBackground(new java.awt.Color(187, 187, 187));
+        txtCondicao.setBackground(new java.awt.Color(40, 40, 40));
         txtCondicao.setColumns(20);
+        txtCondicao.setForeground(new java.awt.Color(220, 220, 220));
         txtCondicao.setRows(5);
         jScrollPane2.setViewportView(txtCondicao);
 
         lbPreco5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPreco5.setForeground(new java.awt.Color(220, 220, 220));
         lbPreco5.setText("...");
 
         lbPreco6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPreco6.setForeground(new java.awt.Color(220, 220, 220));
         lbPreco6.setText("...");
 
         lbPreco7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPreco7.setForeground(new java.awt.Color(220, 220, 220));
         lbPreco7.setText("...");
 
         lbPreco8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPreco8.setForeground(new java.awt.Color(220, 220, 220));
         lbPreco8.setText("...");
 
         lbPreco9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPreco9.setForeground(new java.awt.Color(220, 220, 220));
         lbPreco9.setText("...");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -419,8 +480,12 @@ public class PaginaProduto extends javax.swing.JFrame {
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
+        jButton20.setBackground(new java.awt.Color(60, 60, 60));
+        jButton20.setForeground(new java.awt.Color(220, 220, 220));
         jButton20.setText("Próxima Foto");
 
+        jButton21.setBackground(new java.awt.Color(60, 60, 60));
+        jButton21.setForeground(new java.awt.Color(220, 220, 220));
         jButton21.setText("Foto Anterior");
 
         javax.swing.GroupLayout bgPanelLayout = new javax.swing.GroupLayout(bgPanel);

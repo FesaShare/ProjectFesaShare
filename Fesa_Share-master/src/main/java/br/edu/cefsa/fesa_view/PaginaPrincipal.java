@@ -87,6 +87,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         bgPanel.setPreferredSize(new java.awt.Dimension(1000, 640));
 
         txtBuscarProduto.setBackground(new java.awt.Color(70, 70, 70));
+        txtBuscarProduto.setForeground(new java.awt.Color(220, 220, 220));
         txtBuscarProduto.setText("Buscar");
 
         jPanel2.setBackground(new java.awt.Color(40, 40, 40));
@@ -586,7 +587,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                                 .addComponent(jButton29, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
                             .addGroup(bgPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lbUsuario)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton5)

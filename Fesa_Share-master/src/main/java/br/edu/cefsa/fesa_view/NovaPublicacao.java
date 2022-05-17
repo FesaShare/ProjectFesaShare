@@ -77,8 +77,11 @@ public class NovaPublicacao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(40, 40, 40));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jButtonAddImagem.setBackground(new java.awt.Color(60, 60, 60));
+        jButtonAddImagem.setForeground(new java.awt.Color(220, 220, 220));
         jButtonAddImagem.setText("Adicionar Imagem");
         jButtonAddImagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +89,11 @@ public class NovaPublicacao extends javax.swing.JFrame {
             }
         });
 
+        jTextFieldPath.setBackground(new java.awt.Color(70, 70, 70));
+        jTextFieldPath.setForeground(new java.awt.Color(220, 220, 220));
+
+        jButtonEnviar.setBackground(new java.awt.Color(60, 60, 60));
+        jButtonEnviar.setForeground(new java.awt.Color(220, 220, 220));
         jButtonEnviar.setText("Enviar");
         jButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,14 +101,32 @@ public class NovaPublicacao extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(220, 220, 220));
         jLabel3.setText("Título");
 
+        jLabel4.setForeground(new java.awt.Color(220, 220, 220));
         jLabel4.setText("Descrição");
 
+        jLabel5.setForeground(new java.awt.Color(220, 220, 220));
         jLabel5.setText("Preço / Dia");
 
+        jLabel6.setForeground(new java.awt.Color(220, 220, 220));
         jLabel6.setText("Condição");
 
+        txtCondicaoProduto.setBackground(new java.awt.Color(70, 70, 70));
+        txtCondicaoProduto.setForeground(new java.awt.Color(220, 220, 220));
+
+        txtTituloProduto.setBackground(new java.awt.Color(70, 70, 70));
+        txtTituloProduto.setForeground(new java.awt.Color(220, 220, 220));
+
+        txtDescricaoProduto.setBackground(new java.awt.Color(70, 70, 70));
+        txtDescricaoProduto.setForeground(new java.awt.Color(220, 220, 220));
+
+        txtPrecoAluguelProduto.setBackground(new java.awt.Color(70, 70, 70));
+        txtPrecoAluguelProduto.setForeground(new java.awt.Color(220, 220, 220));
+
+        jButtonEnviar1.setBackground(new java.awt.Color(60, 60, 60));
+        jButtonEnviar1.setForeground(new java.awt.Color(220, 220, 220));
         jButtonEnviar1.setText("Salvar");
         jButtonEnviar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +134,8 @@ public class NovaPublicacao extends javax.swing.JFrame {
             }
         });
 
+        jButtonEnviar2.setBackground(new java.awt.Color(60, 60, 60));
+        jButtonEnviar2.setForeground(new java.awt.Color(220, 220, 220));
         jButtonEnviar2.setText("Cancelar");
         jButtonEnviar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,8 +143,11 @@ public class NovaPublicacao extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setForeground(new java.awt.Color(220, 220, 220));
         jLabel7.setText("Categoria");
 
+        cbCategoriasProduto.setBackground(new java.awt.Color(70, 70, 70));
+        cbCategoriasProduto.setForeground(new java.awt.Color(220, 220, 220));
         cbCategoriasProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Livro", "Kit Eletronica", "Instrumento Musical", "Esportes / Lazer" }));
         cbCategoriasProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +155,15 @@ public class NovaPublicacao extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setForeground(new java.awt.Color(220, 220, 220));
         jLabel8.setText("Detalhes");
+
+        txtDetalhesProduto.setBackground(new java.awt.Color(70, 70, 70));
+        txtDetalhesProduto.setForeground(new java.awt.Color(220, 220, 220));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(220, 220, 220));
+        jLabel1.setText("Nova Publicacao");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -163,13 +202,18 @@ public class NovaPublicacao extends javax.swing.JFrame {
                                         .addComponent(txtCondicaoProduto)
                                         .addComponent(txtTituloProduto, javax.swing.GroupLayout.Alignment.LEADING))
                                     .addComponent(cbCategoriasProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 46, Short.MAX_VALUE)))
+                        .addGap(0, 58, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addComponent(jLabel1)
+                .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtTituloProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -193,7 +237,7 @@ public class NovaPublicacao extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbCategoriasProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAddImagem))
@@ -207,30 +251,15 @@ public class NovaPublicacao extends javax.swing.JFrame {
                     .addComponent(jButtonEnviar2)))
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Nova Publicacao");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(499, 623));
