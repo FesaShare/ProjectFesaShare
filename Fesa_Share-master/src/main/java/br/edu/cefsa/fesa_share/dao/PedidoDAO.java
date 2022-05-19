@@ -172,7 +172,8 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
         return e;
     }
     
-    public Pedido listarPorLocatario(Pedido e) throws PersistenciaException {
+    public List<Pedido> listarPorLocatario(int codigo) throws PersistenciaException, SQLException {
+        List<Pedido> pedidos = new ArrayList();
         String sql = "WITH added_row_number AS (" +
                     "SELECT *, ROW_NUMBER() OVER(PARTITION BY PRODUTOID ORDER BY DATAPEDIDO ASC) AS" +
                     "row_number" +
@@ -186,12 +187,17 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setInt(1, e.getLocatario().getCodigo());
-            ResultSet result = pStatement.executeQuery();
-            if (result.next()) {
-                e.setCodigo(result.getInt("SolicitacaoID"));
-                e.setDataPedido(result.getString("DataPedido"));
-                e.setPrecoAluguel(result.getFloat("PrecoAluguel"));
+            pStatement.setInt(1, codigo);
+            ResultSet result = pStatement.executeQuery();               
+            while (result.next()) {
+                pedidos.add(new Pedido(result.getInt("PedidoID"), 
+                                            result.getInt("ProdutoID"),
+                                            result.getInt("LocatarioID"),
+                                            result.getInt("LocadorID"),
+                                            result.getInt("PagamentoID"),
+                                            result.getFloat("Preco"),
+                                            result.getString("data_pedido"),
+                                            result.getString("data_devolucao")));
                 
             }
         } catch (ClassNotFoundException ex) {
@@ -205,10 +211,11 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
                 Logger.getLogger(SolicitacaoDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return e;
+        return pedidos;
     }
     
-    public Pedido listarPorLocador(Pedido e) throws PersistenciaException {
+    public List<Pedido> listarPorLocador(int codigo) throws PersistenciaException {
+        List<Pedido> pedidos = new ArrayList();
         String sql = "WITH added_row_number AS (" +
                     "SELECT *, ROW_NUMBER() OVER(PARTITION BY PRODUTOID ORDER BY DATAPEDIDO ASC) AS" +
                     "row_number" +
@@ -222,12 +229,17 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setInt(1, e.getLocador().getCodigo());
+            pStatement.setInt(1, codigo);
             ResultSet result = pStatement.executeQuery();
-            if (result.next()) {
-                e.setCodigo(result.getInt("SolicitacaoID"));
-                e.setDataPedido(result.getString("DataPedido"));
-                e.setPrecoAluguel(result.getFloat("PrecoAluguel"));
+            while (result.next()) {
+                pedidos.add(new Pedido(result.getInt("PedidoID"), 
+                                            result.getInt("ProdutoID"),
+                                            result.getInt("LocatarioID"),
+                                            result.getInt("LocadorID"),
+                                            result.getInt("PagamentoID"),
+                                            result.getFloat("Preco"),
+                                            result.getString("data_pedido"),
+                                            result.getString("data_devolucao")));
                 
             }
         } catch (ClassNotFoundException ex) {
@@ -241,6 +253,6 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
                 Logger.getLogger(SolicitacaoDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return e;
+        return pedidos;
     }
 }

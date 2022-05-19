@@ -4,6 +4,15 @@
  */
 package br.edu.cefsa.fesa_view;
 
+import br.edu.cefsa.fesa_share.dao.PedidoDAO;
+import br.edu.cefsa.fesa_share.exception.PersistenciaException;
+import br.edu.cefsa.fesa_share.models.Pedido;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author PC Novo
@@ -13,8 +22,10 @@ public class Solicitacoes extends javax.swing.JFrame {
     /**
      * Creates new form Solicitacoes
      */
-    public Solicitacoes() {
+    public Solicitacoes() throws PersistenciaException, SQLException {
         initComponents();
+        AddRowsSend();
+        AddRowsRecive();
     }
 
     /**
@@ -44,7 +55,7 @@ public class Solicitacoes extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        MinhasSolicitacoes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(61, 63, 65));
@@ -197,7 +208,7 @@ public class Solicitacoes extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Produto", "Locador", "Valor", "Data"
             }
         ));
         jScrollPane3.setViewportView(jTable3);
@@ -205,9 +216,9 @@ public class Solicitacoes extends javax.swing.JFrame {
         jScrollPane4.setBackground(new java.awt.Color(40, 40, 40));
         jScrollPane4.setForeground(new java.awt.Color(220, 220, 220));
 
-        jTable4.setBackground(new java.awt.Color(70, 70, 70));
-        jTable4.setForeground(new java.awt.Color(220, 220, 220));
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        MinhasSolicitacoes.setBackground(new java.awt.Color(70, 70, 70));
+        MinhasSolicitacoes.setForeground(new java.awt.Color(220, 220, 220));
+        MinhasSolicitacoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -215,10 +226,10 @@ public class Solicitacoes extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Produto", "Valor", "Data", "Status"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(MinhasSolicitacoes);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -284,6 +295,34 @@ public class Solicitacoes extends javax.swing.JFrame {
         Solicitacoes.this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    public void AddRowsRecive() throws PersistenciaException, SQLException{
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        PedidoDAO dao = new PedidoDAO();
+        ArrayList<Pedido> list = (ArrayList<Pedido>) dao.listarPorLocatario(1);
+        Object rowData[] = new Object[4];
+        for (int i =0; i <list.size(); i++ ){
+            rowData[0] = list.get(i).getProduto().getDescricao();
+            rowData[1] = list.get(i).getLocador().getNome();
+            rowData[2] = list.get(i).getPrecoAluguel();
+            rowData[3] = list.get(i).getDataPedido();
+            model.addRow(rowData);
+        }
+    }
+    
+    public void AddRowsSend() throws PersistenciaException, SQLException{
+        DefaultTableModel model = (DefaultTableModel) MinhasSolicitacoes.getModel();
+        PedidoDAO dao = new PedidoDAO();
+        ArrayList<Pedido> list = (ArrayList<Pedido>) dao.listarPorLocador(1);
+        Object rowData[] = new Object[4];
+        for (int i =0; i <list.size(); i++ ){
+            rowData[0] = list.get(i).getProduto().getDescricao();
+            rowData[1] = list.get(i).getPrecoAluguel();
+            rowData[2] = list.get(i).getDataPedido();
+            rowData[3] = list.get(i).getProduto().getAluguelStatus();
+            model.addRow(rowData);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -314,12 +353,19 @@ public class Solicitacoes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Solicitacoes().setVisible(true);
+                try {
+                    new Solicitacoes().setVisible(true);
+                } catch (PersistenciaException ex) {
+                    Logger.getLogger(Solicitacoes.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Solicitacoes.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable MinhasSolicitacoes;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -336,8 +382,9 @@ public class Solicitacoes extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JLabel lbUsuario;
     private javax.swing.JTextField txtBuscarProduto;
     // End of variables declaration//GEN-END:variables
+
+
 }
