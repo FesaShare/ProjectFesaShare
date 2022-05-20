@@ -25,7 +25,7 @@ public class Solicitacoes extends javax.swing.JFrame {
     public Solicitacoes() throws PersistenciaException, SQLException {
         initComponents();
         AddRowsSend();
-        AddRowsRecive();
+        //AddRowsRecive();
     }
 
     /**
@@ -301,8 +301,8 @@ public class Solicitacoes extends javax.swing.JFrame {
         ArrayList<Pedido> list = (ArrayList<Pedido>) dao.listarPorLocatario(1);
         Object rowData[] = new Object[4];
         for (int i =0; i <list.size(); i++ ){
-            rowData[0] = list.get(i).getProduto().getDescricao();
-            rowData[1] = list.get(i).getLocador().getNome();
+            rowData[0] = list.get(i).getProdutoID();
+            rowData[1] = list.get(i).getLocadorID();
             rowData[2] = list.get(i).getPrecoAluguel();
             rowData[3] = list.get(i).getDataPedido();
             model.addRow(rowData);
@@ -315,10 +315,10 @@ public class Solicitacoes extends javax.swing.JFrame {
         ArrayList<Pedido> list = (ArrayList<Pedido>) dao.listarPorLocador(1);
         Object rowData[] = new Object[4];
         for (int i =0; i <list.size(); i++ ){
-            rowData[0] = list.get(i).getProduto().getDescricao();
+            rowData[0] = list.get(i).getProdutoID();
             rowData[1] = list.get(i).getPrecoAluguel();
             rowData[2] = list.get(i).getDataPedido();
-            rowData[3] = list.get(i).getProduto().getAluguelStatus();
+            rowData[3] = list.get(i).getProdutoID();
             model.addRow(rowData);
         }
     }

@@ -35,10 +35,10 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
                                             result.getInt("ProdutoID"),
                                             result.getInt("LocatarioID"),
                                             result.getInt("LocadorID"),
+                                            result.getDouble("PrecoAluguel"),
                                             result.getInt("PagamentoID"),
-                                            result.getFloat("Preco"),
-                                            result.getString("data_pedido"),
-                                            result.getString("data_devolucao")));
+                                            result.getString("DataPedido"),
+                                            result.getString("DataPrevistaFim")));
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,13 +63,13 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setInt(1, e.getCodigo());
-            pStatement.setInt(2, e.getProduto().getCodigo());
-            pStatement.setInt(3, e.getLocatario().getCodigo());
-            pStatement.setInt(4, e.getLocador().getCodigo());
-            pStatement.setInt(5, e.getPagamento().getCodigo());
-            pStatement.setFloat(6, e.getPrecoAluguel());
-            
+            pStatement.setInt(1, e.getProdutoID());
+            pStatement.setInt(2, e.getLocatarioID());
+            pStatement.setInt(3, e.getLocadorID());
+            pStatement.setDouble(4, e.getPrecoAluguel());
+            pStatement.setInt(5, e.getPagamentoID());
+            pStatement.setString(6, e.getDataPedido());
+            pStatement.setString(7, e.getDataDevolucao());
             //-------------Inserir para datas---------------------//
             
             pStatement.execute();
@@ -100,7 +100,7 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
         try {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
-            pStatement.setFloat(1, e.getPrecoAluguel());
+            pStatement.setDouble(1, e.getPrecoAluguel());
             pStatement.setInt(2, e.getCodigo());
             pStatement.execute();
         } catch (ClassNotFoundException ex) {
@@ -188,16 +188,17 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
             pStatement.setInt(1, codigo);
-            ResultSet result = pStatement.executeQuery();               
-            while (result.next()) {
+            ResultSet result = pStatement.executeQuery();  
+            System.out.println(result);
+            if (result.next()) {
                 pedidos.add(new Pedido(result.getInt("PedidoID"), 
                                             result.getInt("ProdutoID"),
                                             result.getInt("LocatarioID"),
                                             result.getInt("LocadorID"),
+                                            result.getDouble("PrecoAluguel"),
                                             result.getInt("PagamentoID"),
-                                            result.getFloat("Preco"),
-                                            result.getString("data_pedido"),
-                                            result.getString("data_devolucao")));
+                                            result.getString("DataPedido"),
+                                            result.getString("DataPrevistaFim")));
                 
             }
         } catch (ClassNotFoundException ex) {
@@ -236,10 +237,10 @@ public class PedidoDAO implements GenericoDAO<Pedido> {
                                             result.getInt("ProdutoID"),
                                             result.getInt("LocatarioID"),
                                             result.getInt("LocadorID"),
+                                            result.getDouble("PrecoAluguel"),
                                             result.getInt("PagamentoID"),
-                                            result.getFloat("Preco"),
-                                            result.getString("data_pedido"),
-                                            result.getString("data_devolucao")));
+                                            result.getString("DataPedido"),
+                                            result.getString("DataPrevistaFim")));
                 
             }
         } catch (ClassNotFoundException ex) {

@@ -14,30 +14,30 @@ import java.time.LocalDateTime;
 public class Pedido implements Serializable{
     
     private int codigo;
-    private int solicitacaoID;
-    private Chat chat = new Chat();
-    private Produto produto;
-    private Usuario locador = new Usuario();
-    private Usuario locatario = new Usuario();        
-    private Pagamento pagamento;
-    private Float precoAluguel;
+    private int chatID;
+    private int produtoID;
+    private int locadorID;
+    private int locatarioID;        
+    private int pagamentoID;
+    private double precoAluguel;
     private String dataPedido;
-    private Fila fila = new Fila();
+    private String dataDevolucao;
 
-    public Pedido(int codigo, int solicitacaoID, Produto produto, Pagamento pagamento, Float precoAluguel, String dataPedido) {
-        this.codigo = codigo;
-        this.solicitacaoID = solicitacaoID;
-        this.produto = produto;
-        this.pagamento = pagamento;
-        this.precoAluguel = precoAluguel;
-        this.dataPedido = dataPedido;
-    }
 
     Pedido() {
     }
 
-    public Pedido(int codigo, int produtoID, int locatarioID, int locadorID, int pagamentoID, float preco, String data_pedido, String data_devolucao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Pedido(int codigo, int produtoID, int locatarioID, int locadorID, double precoAluguel, int pagamentoID, String data_pedido, String data_devolucao) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.codigo = codigo;
+        this.locatarioID = locatarioID;
+        this.locadorID = locadorID;
+        this.produtoID = produtoID;
+        this.pagamentoID = pagamentoID;
+        this.precoAluguel = precoAluguel;
+        this.dataPedido = data_pedido;
+        this.dataDevolucao = data_devolucao;
+    
     }
 
     public int getCodigo() {
@@ -48,59 +48,20 @@ public class Pedido implements Serializable{
         this.codigo = codigo;
     }
 
-    public int getSolicitacaoID() {
-        return solicitacaoID;
+    public int getChatID() {
+        return chatID;
     }
 
-    public void setSolicitacaoID(int solicitacaoID) {
-        this.solicitacaoID = solicitacaoID;
+    public void setChatID(int chatID) {
+        this.chatID = chatID;
     }
 
-    public Chat getChat() {
-        return chat;
-    }
-
-    public void setChat(Chat chat) {
-        this.chat = chat;
-    }
-
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
-    public Usuario getLocador() {
-        return locador;
-    }
-
-    public void setLocador(Usuario locador) {
-        this.locador = locador;
-    }
-
-    public Usuario getLocatario() {
-        return locatario;
-    }
-
-    public void setLocatario(Usuario locatario) {
-        this.locatario = locatario;
-    }
-
-    public Pagamento getPagamento() {
-        return pagamento;
-    }
-
-    public void setPagamento(Pagamento pagamento) {
-        this.pagamento = pagamento;
-    }
-
-    public Float getPrecoAluguel() {
+    
+    public double getPrecoAluguel() {
         return precoAluguel;
     }
 
-    public void setPrecoAluguel(Float precoAluguel) {
+    public void setPrecoAluguel(double precoAluguel) {
         this.precoAluguel = precoAluguel;
     }
 
@@ -112,14 +73,45 @@ public class Pedido implements Serializable{
         this.dataPedido = dataPedido;
     }
 
-    public Fila getFila() {
-        return fila;
+    public int getProdutoID() {
+        return produtoID;
     }
 
-    public void setFila(Fila fila) {
-        this.fila = fila;
+    public void setProdutoID(int produtoID) {
+        this.produtoID = produtoID;
     }
 
-    
+    public int getLocadorID() {
+        return locadorID;
+    }
+
+    public void setLocadorID(int locadorID) {
+        this.locadorID = locadorID;
+    }
+
+    public int getLocatarioID() {
+        return locatarioID;
+    }
+
+    public void setLocatarioID(int locatarioID) {
+        this.locatarioID = locatarioID;
+    }
+
+    public int getPagamentoID() {
+        return pagamentoID;
+    }
+
+    public void setPagamentoID(int pagamentoID) {
+        this.pagamentoID = pagamentoID;
+    }
+
+    public String getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public void setDataDevolucao(String dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
+    }
+ 
     
 }

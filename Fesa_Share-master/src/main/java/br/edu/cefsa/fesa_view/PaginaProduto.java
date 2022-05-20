@@ -4,6 +4,11 @@
  */
 package br.edu.cefsa.fesa_view;
 
+import br.edu.cefsa.fesa_share.exception.PersistenciaException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author PC Novo
@@ -617,7 +622,14 @@ public class PaginaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        Solicitacoes pgSolicitacoes = new Solicitacoes();
+        Solicitacoes pgSolicitacoes = null;
+        try {
+            pgSolicitacoes = new Solicitacoes();
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(PaginaProduto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(PaginaProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }
         pgSolicitacoes.setVisible(true);
         PaginaProduto.this.dispose();
     }//GEN-LAST:event_jButton12ActionPerformed

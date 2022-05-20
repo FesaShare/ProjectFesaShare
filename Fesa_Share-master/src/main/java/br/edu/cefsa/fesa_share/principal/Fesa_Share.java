@@ -7,6 +7,7 @@ package br.edu.cefsa.fesa_share.principal;
 
 import br.edu.cefsa.fesa_share.dao.CategoriaDAO;
 import br.edu.cefsa.fesa_share.dao.ImagemDAO;
+import br.edu.cefsa.fesa_share.dao.PedidoDAO;
 import br.edu.cefsa.fesa_share.dao.ProdutoDAO;
 import br.edu.cefsa.fesa_share.dao.UsuarioDAO;
 import br.edu.cefsa.fesa_share.exception.PersistenciaException;
@@ -102,6 +103,9 @@ public class Fesa_Share {
         lista.forEach(produto -> System.out.println(produto.getDescricao()));
         */
          
+        PedidoDAO dao = new PedidoDAO();
+        System.out.println(dao.listar());
+        
         Login pgLogin = new Login();
         pgLogin.setVisible(true);
         
