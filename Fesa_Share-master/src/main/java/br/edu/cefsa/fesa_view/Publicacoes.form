@@ -111,9 +111,9 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="lbNumPag" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
                               <Component id="jPanel18" alignment="0" max="32767" attributes="0"/>
-                              <Component id="prod1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
+                              <Component id="prod1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
@@ -626,21 +626,22 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Component id="lbProduto1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="380" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButton33" min="-2" pref="135" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lbDescricao1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lbCondicao1" alignment="0" min="-2" pref="488" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lbPreco1" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lbPreco1" min="-2" pref="144" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lbDescricao1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lbCondicao1" alignment="0" min="-2" pref="488" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnAltera1" min="-2" pref="135" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -664,6 +665,7 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lbDescricao1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbProduto5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAltera1" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -831,6 +833,21 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton31ActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="btnAltera1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3c" green="3c" red="3c" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="dc" green="dc" red="dc" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Alterar Produto"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltera1jButton31ActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel5">
@@ -873,14 +890,16 @@
                               <Component id="jButton35" min="-2" pref="135" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lbCondicao2" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lbDescricao2" alignment="0" min="-2" pref="518" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lbPreco2" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lbPreco2" min="-2" pref="144" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lbCondicao2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lbDescricao2" alignment="0" min="-2" pref="518" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnAltera2" min="-2" pref="135" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -909,7 +928,10 @@
                                   <Component id="jButton35" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lbDescricao2" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lbDescricao2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAltera2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lbCondicao2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1070,6 +1092,21 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton35jButton31ActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="btnAltera2">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3c" green="3c" red="3c" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="dc" green="dc" red="dc" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Alterar Produto"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltera2jButton31ActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel18">
@@ -1112,14 +1149,16 @@
                               <Component id="jButton32" min="-2" pref="135" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lbCondicao3" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lbDescricao3" alignment="0" min="-2" pref="498" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lbPreco3" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lbPreco3" min="-2" pref="144" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lbCondicao3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lbDescricao3" alignment="0" min="-2" pref="498" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnAltera3" min="-2" pref="135" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1149,6 +1188,7 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lbDescricao3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbProduto14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAltera3" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lbCondicao3" min="-2" max="-2" attributes="0"/>
@@ -1309,6 +1349,21 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Condi&#xe7;&#xe3;o :"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnAltera3">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="3c" green="3c" red="3c" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="dc" green="dc" red="dc" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Alterar Produto"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAltera3jButton31ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

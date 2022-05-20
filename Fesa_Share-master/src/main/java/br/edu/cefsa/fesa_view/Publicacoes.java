@@ -38,6 +38,19 @@ public class Publicacoes extends javax.swing.JFrame {
         {
             carregaListaProdutos();
         }
+        
+        if(meusProdutos)
+        {
+            btnAltera1.setVisible(true);
+            btnAltera2.setVisible(true);
+            btnAltera3.setVisible(true);
+        }
+        else
+        {
+            btnAltera1.setVisible(false);
+            btnAltera2.setVisible(false);
+            btnAltera3.setVisible(false);
+        }
  
     }
     
@@ -136,6 +149,19 @@ public class Publicacoes extends javax.swing.JFrame {
             txtPub.setText("Você não tem nenhuma publicação");
         }
         
+        if(meusProdutos)
+        {
+            btnAltera1.setVisible(true);
+            btnAltera2.setVisible(true);
+            btnAltera3.setVisible(true);
+        }
+        else
+        {
+            btnAltera1.setVisible(false);
+            btnAltera2.setVisible(false);
+            btnAltera3.setVisible(false);
+        }
+        
     }
 
     /**
@@ -184,6 +210,7 @@ public class Publicacoes extends javax.swing.JFrame {
         lbProduto6 = new javax.swing.JLabel();
         lbProduto7 = new javax.swing.JLabel();
         jButton33 = new javax.swing.JButton();
+        btnAltera1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -196,6 +223,7 @@ public class Publicacoes extends javax.swing.JFrame {
         lbProduto9 = new javax.swing.JLabel();
         lbProduto10 = new javax.swing.JLabel();
         jButton35 = new javax.swing.JButton();
+        btnAltera2 = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -208,6 +236,7 @@ public class Publicacoes extends javax.swing.JFrame {
         lbProduto14 = new javax.swing.JLabel();
         lbProduto15 = new javax.swing.JLabel();
         lbProduto13 = new javax.swing.JLabel();
+        btnAltera3 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         lbPagAtual = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -586,6 +615,16 @@ public class Publicacoes extends javax.swing.JFrame {
             }
         });
 
+        btnAltera1.setBackground(new java.awt.Color(60, 60, 60));
+        btnAltera1.setForeground(new java.awt.Color(220, 220, 220));
+        btnAltera1.setText("Alterar Produto");
+        btnAltera1.setToolTipText("");
+        btnAltera1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAltera1jButton31ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout prod1Layout = new javax.swing.GroupLayout(prod1);
         prod1.setLayout(prod1Layout);
         prod1Layout.setHorizontalGroup(
@@ -601,18 +640,19 @@ public class Publicacoes extends javax.swing.JFrame {
                     .addComponent(lbProduto4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(prod1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, prod1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(prod1Layout.createSequentialGroup()
                         .addComponent(lbProduto1)
-                        .addGap(380, 380, 380)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(prod1Layout.createSequentialGroup()
-                        .addGroup(prod1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(prod1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lbDescricao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbCondicao1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbPreco1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(lbPreco1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(prod1Layout.createSequentialGroup()
+                        .addGroup(prod1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbDescricao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbCondicao1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAltera1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         prod1Layout.setVerticalGroup(
@@ -629,7 +669,8 @@ public class Publicacoes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(prod1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbDescricao1)
-                            .addComponent(lbProduto5))
+                            .addComponent(lbProduto5)
+                            .addComponent(btnAltera1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(prod1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbCondicao1)
@@ -714,6 +755,16 @@ public class Publicacoes extends javax.swing.JFrame {
             }
         });
 
+        btnAltera2.setBackground(new java.awt.Color(60, 60, 60));
+        btnAltera2.setForeground(new java.awt.Color(220, 220, 220));
+        btnAltera2.setText("Alterar Produto");
+        btnAltera2.setToolTipText("");
+        btnAltera2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAltera2jButton31ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -734,12 +785,14 @@ public class Publicacoes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lbCondicao2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbDescricao2, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbPreco2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(lbPreco2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbCondicao2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbDescricao2, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAltera2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -761,7 +814,9 @@ public class Publicacoes extends javax.swing.JFrame {
                                 .addComponent(lbProduto11))
                             .addComponent(jButton35))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbDescricao2)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbDescricao2)
+                            .addComponent(btnAltera2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbCondicao2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -842,6 +897,16 @@ public class Publicacoes extends javax.swing.JFrame {
         lbProduto13.setForeground(new java.awt.Color(220, 220, 220));
         lbProduto13.setText("Condição :");
 
+        btnAltera3.setBackground(new java.awt.Color(60, 60, 60));
+        btnAltera3.setForeground(new java.awt.Color(220, 220, 220));
+        btnAltera3.setText("Alterar Produto");
+        btnAltera3.setToolTipText("");
+        btnAltera3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAltera3jButton31ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -862,12 +927,14 @@ public class Publicacoes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lbCondicao3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbDescricao3, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbPreco3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(lbPreco3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbCondicao3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbDescricao3, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAltera3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel18Layout.setVerticalGroup(
@@ -889,7 +956,8 @@ public class Publicacoes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbDescricao3)
-                            .addComponent(lbProduto14))
+                            .addComponent(lbProduto14)
+                            .addComponent(btnAltera3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbCondicao3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -970,9 +1038,9 @@ public class Publicacoes extends javax.swing.JFrame {
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lbNumPag))
-                            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(prod1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(prod1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(bgLayout.createSequentialGroup()
                                 .addGap(31, 31, 31)
@@ -1147,6 +1215,18 @@ public class Publicacoes extends javax.swing.JFrame {
     private void jButton35jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35jButton31ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton35jButton31ActionPerformed
+
+    private void btnAltera1jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltera1jButton31ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAltera1jButton31ActionPerformed
+
+    private void btnAltera2jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltera2jButton31ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAltera2jButton31ActionPerformed
+
+    private void btnAltera3jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltera3jButton31ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAltera3jButton31ActionPerformed
     
    
     /**
@@ -1186,6 +1266,9 @@ public class Publicacoes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
+    private javax.swing.JButton btnAltera1;
+    private javax.swing.JButton btnAltera2;
+    private javax.swing.JButton btnAltera3;
     private javax.swing.JPanel cab;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
