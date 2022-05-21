@@ -4,6 +4,7 @@
  */
 package br.edu.cefsa.fesa_share.util;
 
+import br.edu.cefsa.fesa_share.models.Produto;
 import br.edu.cefsa.fesa_share.models.Usuario;
 
 /**
@@ -13,7 +14,7 @@ import br.edu.cefsa.fesa_share.models.Usuario;
 public class DadosEstaticos {
     
     public static Usuario usuarioLogado = new Usuario();
-    
-    
+    public static Produto produtoSelecionado = new Produto();
+    public static boolean alteraProduto = false;
  
 }

@@ -11,6 +11,7 @@ import br.edu.cefsa.fesa_share.models.Categoria;
 import br.edu.cefsa.fesa_share.models.Imagem;
 import br.edu.cefsa.fesa_share.models.Produto;
 import br.edu.cefsa.fesa_share.models.Usuario;
+import br.edu.cefsa.fesa_share.util.DadosEstaticos;
 import br.edu.cefsa.fesa_share.util.ManipularImagem;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -40,6 +41,17 @@ public class NovaPublicacao extends javax.swing.JFrame {
     String caminho;
     public NovaPublicacao() {
         initComponents();
+        
+        if(DadosEstaticos.alteraProduto)
+        {
+            txtTituloProduto.setText(DadosEstaticos.produtoSelecionado.getTitulo());
+            txtDescricaoProduto.setText(DadosEstaticos.produtoSelecionado.getDescricao());
+            txtPrecoAluguelProduto.setText(Double.toString(DadosEstaticos.produtoSelecionado.getPrecoTotal()));
+            txtCondicaoProduto.setText(DadosEstaticos.produtoSelecionado.getCondicao());
+            txtDetalhesProduto.setText(DadosEstaticos.produtoSelecionado.getDetalhes());
+            
+            DadosEstaticos.alteraProduto = false;
+        }
     }
 
     /**
@@ -314,11 +326,12 @@ public class NovaPublicacao extends javax.swing.JFrame {
     private void jButtonEnviar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviar1ActionPerformed
        Produto p = new Produto();
        Usuario u = new Usuario();
+       u = DadosEstaticos.usuarioLogado;
        Categoria c = new Categoria();
-       u.setCodigo(33);
-       c.setCodigo(6);
-       p.setUsuarioID(33);
-       p.setCategoriaID(6);
+       u.setCodigo(u.getCodigo());
+       c.setCodigo(cbCategoriasProduto.getSelectedIndex());
+       p.setUsuarioID(u.getCodigo());
+       p.setCategoriaID(cbCategoriasProduto.getSelectedIndex());
        p.setTitulo(txtTituloProduto.getText());
        p.setDescricao(txtDescricaoProduto.getText());
        p.setCondicao(txtCondicaoProduto.getText());
@@ -332,6 +345,7 @@ public class NovaPublicacao extends javax.swing.JFrame {
         try {
             pDAO.inserir(p);
             JOptionPane.showMessageDialog(null, "Produto Inserido com sucesso");
+            DadosEstaticos.alteraProduto = false;
             NovaPublicacao.this.dispose();
         } catch (PersistenciaException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao inserir o produto na base de dados " + ex);

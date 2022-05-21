@@ -44,12 +44,18 @@ public class Publicacoes extends javax.swing.JFrame {
             btnAltera1.setVisible(true);
             btnAltera2.setVisible(true);
             btnAltera3.setVisible(true);
+            btnExclui1.setVisible(true);
+            btnExclui2.setVisible(true);
+            btnExclui3.setVisible(true);
         }
         else
         {
             btnAltera1.setVisible(false);
             btnAltera2.setVisible(false);
             btnAltera3.setVisible(false);
+            btnExclui1.setVisible(false);
+            btnExclui2.setVisible(false);
+            btnExclui3.setVisible(false);
         }
  
     }
@@ -154,12 +160,18 @@ public class Publicacoes extends javax.swing.JFrame {
             btnAltera1.setVisible(true);
             btnAltera2.setVisible(true);
             btnAltera3.setVisible(true);
+            btnExclui1.setVisible(true);
+            btnExclui2.setVisible(true);
+            btnExclui3.setVisible(true);
         }
         else
         {
             btnAltera1.setVisible(false);
             btnAltera2.setVisible(false);
             btnAltera3.setVisible(false);
+            btnExclui1.setVisible(false);
+            btnExclui2.setVisible(false);
+            btnExclui3.setVisible(false);
         }
         
     }
@@ -211,6 +223,7 @@ public class Publicacoes extends javax.swing.JFrame {
         lbProduto7 = new javax.swing.JLabel();
         jButton33 = new javax.swing.JButton();
         btnAltera1 = new javax.swing.JButton();
+        btnExclui1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -224,6 +237,7 @@ public class Publicacoes extends javax.swing.JFrame {
         lbProduto10 = new javax.swing.JLabel();
         jButton35 = new javax.swing.JButton();
         btnAltera2 = new javax.swing.JButton();
+        btnExclui2 = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -237,6 +251,7 @@ public class Publicacoes extends javax.swing.JFrame {
         lbProduto15 = new javax.swing.JLabel();
         lbProduto13 = new javax.swing.JLabel();
         btnAltera3 = new javax.swing.JButton();
+        btnExclui3 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         lbPagAtual = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -625,6 +640,16 @@ public class Publicacoes extends javax.swing.JFrame {
             }
         });
 
+        btnExclui1.setBackground(new java.awt.Color(60, 60, 60));
+        btnExclui1.setForeground(new java.awt.Color(220, 220, 220));
+        btnExclui1.setText("Excluir Produto");
+        btnExclui1.setToolTipText("");
+        btnExclui1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExclui1jButton31ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout prod1Layout = new javax.swing.GroupLayout(prod1);
         prod1.setLayout(prod1Layout);
         prod1Layout.setHorizontalGroup(
@@ -652,7 +677,9 @@ public class Publicacoes extends javax.swing.JFrame {
                             .addComponent(lbDescricao1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbCondicao1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAltera1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(prod1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAltera1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExclui1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         prod1Layout.setVerticalGroup(
@@ -674,7 +701,8 @@ public class Publicacoes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(prod1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbCondicao1)
-                            .addComponent(lbProduto6))
+                            .addComponent(lbProduto6)
+                            .addComponent(btnExclui1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(prod1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbPreco1)
@@ -765,6 +793,16 @@ public class Publicacoes extends javax.swing.JFrame {
             }
         });
 
+        btnExclui2.setBackground(new java.awt.Color(60, 60, 60));
+        btnExclui2.setForeground(new java.awt.Color(220, 220, 220));
+        btnExclui2.setText("Excluir Produto");
+        btnExclui2.setToolTipText("");
+        btnExclui2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExclui2jButton31ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -792,7 +830,9 @@ public class Publicacoes extends javax.swing.JFrame {
                             .addComponent(lbCondicao2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbDescricao2, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAltera2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAltera2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExclui2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -818,7 +858,9 @@ public class Publicacoes extends javax.swing.JFrame {
                             .addComponent(lbDescricao2)
                             .addComponent(btnAltera2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbCondicao2)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbCondicao2)
+                            .addComponent(btnExclui2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbPreco2))
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -907,6 +949,16 @@ public class Publicacoes extends javax.swing.JFrame {
             }
         });
 
+        btnExclui3.setBackground(new java.awt.Color(60, 60, 60));
+        btnExclui3.setForeground(new java.awt.Color(220, 220, 220));
+        btnExclui3.setText("Excluir Produto");
+        btnExclui3.setToolTipText("");
+        btnExclui3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExclui3jButton31ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -934,7 +986,9 @@ public class Publicacoes extends javax.swing.JFrame {
                             .addComponent(lbCondicao3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbDescricao3, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAltera3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAltera3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExclui3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel18Layout.setVerticalGroup(
@@ -959,7 +1013,9 @@ public class Publicacoes extends javax.swing.JFrame {
                             .addComponent(lbProduto14)
                             .addComponent(btnAltera3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbCondicao3)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbCondicao3)
+                            .addComponent(btnExclui3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbPreco3))
                     .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1120,13 +1176,13 @@ public class Publicacoes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        if(produtoAtual - 3 > 0)
+        if(produtoAtual - 3 >= 0)
         {
             produtoAtual = produtoAtual - 3;
             if(pagAtual > 0)
             pagAtual--;
         }
-        else if(produtoAtual - 2 > 0)
+        else if(produtoAtual - 2 >= 0)
         {
             produtoAtual = produtoAtual - 2;
             if(pagAtual > 0)
@@ -1203,30 +1259,111 @@ public class Publicacoes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
-        PaginaProduto pgProduto = new PaginaProduto();
-        pgProduto.setVisible(true);
+        if(lista.size() > 0)
+        {
+            int num = 0;
+            if(pagAtual > 1)
+                num = pagAtual;
+            DadosEstaticos.produtoSelecionado = lista.get((produtoAtual + 2));
+            PaginaProduto pgProduto = new PaginaProduto();
+            pgProduto.setVisible(true);
+        }
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
-        PaginaProduto pgProduto = new PaginaProduto();
-        pgProduto.setVisible(true);
+        if(lista.size() > 0)
+        {
+            int num = 0;
+            if(pagAtual > 1)
+                num = pagAtual;
+            DadosEstaticos.produtoSelecionado = lista.get(produtoAtual);
+            PaginaProduto pgProduto = new PaginaProduto();
+            pgProduto.setVisible(true);
+        }
+        
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void jButton35jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35jButton31ActionPerformed
-        // TODO add your handling code here:
+        if(lista.size() > 0)
+        {
+            int num = 0;
+            if(pagAtual > 1)
+                num = pagAtual;
+            DadosEstaticos.produtoSelecionado = lista.get((produtoAtual + 1));
+            PaginaProduto pgProduto = new PaginaProduto();
+            pgProduto.setVisible(true);
+        }
     }//GEN-LAST:event_jButton35jButton31ActionPerformed
 
     private void btnAltera1jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltera1jButton31ActionPerformed
-        // TODO add your handling code here:
+        if(lista.size() > 0)
+        {
+            DadosEstaticos.produtoSelecionado = lista.get(produtoAtual);
+            DadosEstaticos.alteraProduto = true;
+            NovaPublicacao pgProduto = new NovaPublicacao();
+            pgProduto.setVisible(true);
+        }
     }//GEN-LAST:event_btnAltera1jButton31ActionPerformed
 
     private void btnAltera2jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltera2jButton31ActionPerformed
-        // TODO add your handling code here:
+        if(lista.size() > 0)
+        {
+            DadosEstaticos.produtoSelecionado = lista.get(produtoAtual + 1);
+            DadosEstaticos.alteraProduto = true;
+            NovaPublicacao pgProduto = new NovaPublicacao();
+            pgProduto.setVisible(true);
+        }
     }//GEN-LAST:event_btnAltera2jButton31ActionPerformed
 
     private void btnAltera3jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltera3jButton31ActionPerformed
-        // TODO add your handling code here:
+        if(lista.size() > 0)
+        {
+            DadosEstaticos.produtoSelecionado = lista.get(produtoAtual + 2);
+            DadosEstaticos.alteraProduto = true;
+            NovaPublicacao pgProduto = new NovaPublicacao();
+            pgProduto.setVisible(true);
+        }
     }//GEN-LAST:event_btnAltera3jButton31ActionPerformed
+
+    private void btnExclui1jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExclui1jButton31ActionPerformed
+        if(lista.size() > 0)
+        {
+            DadosEstaticos.produtoSelecionado = lista.get(produtoAtual);
+            
+            try {
+                prodDAO.remover(DadosEstaticos.produtoSelecionado);
+            } catch (PersistenciaException ex) {
+                Logger.getLogger(Publicacoes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+    }//GEN-LAST:event_btnExclui1jButton31ActionPerformed
+
+    private void btnExclui2jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExclui2jButton31ActionPerformed
+        if(lista.size() > 0)
+        {
+            DadosEstaticos.produtoSelecionado = lista.get(produtoAtual * pagAtual);
+            
+            try {
+                prodDAO.remover(DadosEstaticos.produtoSelecionado);
+            } catch (PersistenciaException ex) {
+                Logger.getLogger(Publicacoes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnExclui2jButton31ActionPerformed
+
+    private void btnExclui3jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExclui3jButton31ActionPerformed
+        if(lista.size() > 0)
+        {
+            DadosEstaticos.produtoSelecionado = lista.get(produtoAtual * pagAtual);
+            
+            try {
+                prodDAO.remover(DadosEstaticos.produtoSelecionado);
+            } catch (PersistenciaException ex) {
+                Logger.getLogger(Publicacoes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnExclui3jButton31ActionPerformed
     
    
     /**
@@ -1269,6 +1406,9 @@ public class Publicacoes extends javax.swing.JFrame {
     private javax.swing.JButton btnAltera1;
     private javax.swing.JButton btnAltera2;
     private javax.swing.JButton btnAltera3;
+    private javax.swing.JButton btnExclui1;
+    private javax.swing.JButton btnExclui2;
+    private javax.swing.JButton btnExclui3;
     private javax.swing.JPanel cab;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;

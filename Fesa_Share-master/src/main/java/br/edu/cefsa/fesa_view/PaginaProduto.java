@@ -5,6 +5,8 @@
 package br.edu.cefsa.fesa_view;
 
 import br.edu.cefsa.fesa_share.exception.PersistenciaException;
+import br.edu.cefsa.fesa_share.models.Produto;
+import br.edu.cefsa.fesa_share.util.DadosEstaticos;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,8 +20,23 @@ public class PaginaProduto extends javax.swing.JFrame {
     /**
      * Creates new form PaginaProduto
      */
+    Produto prodAtual = new Produto();
+    
+    
     public PaginaProduto() {
         initComponents();
+        
+        prodAtual = DadosEstaticos.produtoSelecionado;
+        
+        lbProduto.setText(prodAtual.getTitulo());
+        lbDescricao.setText(prodAtual.getDescricao());
+        lbCondicao.setText(prodAtual.getCondicao());
+        lbPreco.setText(Double.toString(prodAtual.getPrecoTotal()));
+        lbStatus.setText(prodAtual.getAluguelStatus());
+        lbDetalhes.setText(prodAtual.getDetalhes());
+        lbTempoUso.setText(Integer.toString(prodAtual.getTempoUso()));
+                
+
     }
 
     /**
@@ -67,15 +84,15 @@ public class PaginaProduto extends javax.swing.JFrame {
         lbPreco2 = new javax.swing.JLabel();
         lbPreco4 = new javax.swing.JLabel();
         lbPreco3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtDescricao = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtCondicao = new javax.swing.JTextArea();
-        lbPreco5 = new javax.swing.JLabel();
-        lbPreco6 = new javax.swing.JLabel();
-        lbPreco7 = new javax.swing.JLabel();
-        lbPreco8 = new javax.swing.JLabel();
-        lbPreco9 = new javax.swing.JLabel();
+        lbPreco = new javax.swing.JLabel();
+        lbStatus = new javax.swing.JLabel();
+        lbDetalhes = new javax.swing.JLabel();
+        lbTempoUso = new javax.swing.JLabel();
+        lbProduto = new javax.swing.JLabel();
+        lbProduto2 = new javax.swing.JLabel();
+        lbDescricao = new javax.swing.JLabel();
+        lbCondicao = new javax.swing.JLabel();
+        lbProduto5 = new javax.swing.JLabel();
         jButton20 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
 
@@ -346,7 +363,7 @@ public class PaginaProduto extends javax.swing.JFrame {
                 .addComponent(jButton18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(jButton10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton12)
@@ -374,7 +391,7 @@ public class PaginaProduto extends javax.swing.JFrame {
 
         lbPreco1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbPreco1.setForeground(new java.awt.Color(220, 220, 220));
-        lbPreco1.setText("Preço:");
+        lbPreco1.setText("Preço: R$");
 
         lbPreco2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbPreco2.setForeground(new java.awt.Color(220, 220, 220));
@@ -388,72 +405,78 @@ public class PaginaProduto extends javax.swing.JFrame {
         lbPreco3.setForeground(new java.awt.Color(220, 220, 220));
         lbPreco3.setText("Tempo de Uso:");
 
-        txtDescricao.setBackground(new java.awt.Color(40, 40, 40));
-        txtDescricao.setColumns(20);
-        txtDescricao.setForeground(new java.awt.Color(220, 220, 220));
-        txtDescricao.setRows(5);
-        jScrollPane1.setViewportView(txtDescricao);
+        lbPreco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbPreco.setForeground(new java.awt.Color(220, 220, 220));
+        lbPreco.setText("...");
 
-        txtCondicao.setBackground(new java.awt.Color(40, 40, 40));
-        txtCondicao.setColumns(20);
-        txtCondicao.setForeground(new java.awt.Color(220, 220, 220));
-        txtCondicao.setRows(5);
-        jScrollPane2.setViewportView(txtCondicao);
+        lbStatus.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbStatus.setForeground(new java.awt.Color(220, 220, 220));
+        lbStatus.setText("...");
 
-        lbPreco5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbPreco5.setForeground(new java.awt.Color(220, 220, 220));
-        lbPreco5.setText("...");
+        lbDetalhes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbDetalhes.setForeground(new java.awt.Color(220, 220, 220));
+        lbDetalhes.setText("...");
 
-        lbPreco6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbPreco6.setForeground(new java.awt.Color(220, 220, 220));
-        lbPreco6.setText("...");
+        lbTempoUso.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbTempoUso.setForeground(new java.awt.Color(220, 220, 220));
+        lbTempoUso.setText("...");
 
-        lbPreco7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbPreco7.setForeground(new java.awt.Color(220, 220, 220));
-        lbPreco7.setText("...");
+        lbProduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbProduto.setForeground(new java.awt.Color(220, 220, 220));
+        lbProduto.setText("...");
 
-        lbPreco8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbPreco8.setForeground(new java.awt.Color(220, 220, 220));
-        lbPreco8.setText("...");
+        lbProduto2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbProduto2.setForeground(new java.awt.Color(220, 220, 220));
+        lbProduto2.setText("Descrição:");
 
-        lbPreco9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbPreco9.setForeground(new java.awt.Color(220, 220, 220));
-        lbPreco9.setText("...");
+        lbDescricao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbDescricao.setForeground(new java.awt.Color(220, 220, 220));
+        lbDescricao.setText("...");
+
+        lbCondicao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbCondicao.setForeground(new java.awt.Color(220, 220, 220));
+        lbCondicao.setText("...");
+
+        lbProduto5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lbProduto5.setForeground(new java.awt.Color(220, 220, 220));
+        lbProduto5.setText("Condição:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(lbProduto1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbPreco9))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lbPreco4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbPreco2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lbPreco1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbPreco6)
-                                            .addComponent(lbPreco5))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbPreco7))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(lbPreco3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbPreco8)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lbProduto1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbProduto))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lbProduto2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbDescricao))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lbProduto5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbCondicao))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lbPreco1)
+                        .addGap(20, 20, 20)
+                        .addComponent(lbPreco))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lbPreco2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbStatus))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lbPreco4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbDetalhes))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(lbPreco3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbTempoUso)))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -461,28 +484,32 @@ public class PaginaProduto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbProduto1)
-                    .addComponent(lbPreco9))
+                    .addComponent(lbProduto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbProduto2)
+                    .addComponent(lbDescricao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbProduto5)
+                    .addComponent(lbCondicao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPreco1)
-                    .addComponent(lbPreco5))
+                    .addComponent(lbPreco))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPreco2)
-                    .addComponent(lbPreco6))
+                    .addComponent(lbStatus))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPreco4)
-                    .addComponent(lbPreco7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(lbDetalhes))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPreco3)
-                    .addComponent(lbPreco8))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(lbTempoUso))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButton20.setBackground(new java.awt.Color(60, 60, 60));
@@ -571,7 +598,7 @@ public class PaginaProduto extends javax.swing.JFrame {
                 .addGroup(bgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton20)
                     .addComponent(jButton21))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -580,7 +607,7 @@ public class PaginaProduto extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bgPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
+                .addComponent(bgPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1138, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -591,6 +618,7 @@ public class PaginaProduto extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -726,21 +754,21 @@ public class PaginaProduto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbCondicao;
+    private javax.swing.JLabel lbDescricao;
+    private javax.swing.JLabel lbDetalhes;
+    private javax.swing.JLabel lbPreco;
     private javax.swing.JLabel lbPreco1;
     private javax.swing.JLabel lbPreco2;
     private javax.swing.JLabel lbPreco3;
     private javax.swing.JLabel lbPreco4;
-    private javax.swing.JLabel lbPreco5;
-    private javax.swing.JLabel lbPreco6;
-    private javax.swing.JLabel lbPreco7;
-    private javax.swing.JLabel lbPreco8;
-    private javax.swing.JLabel lbPreco9;
+    private javax.swing.JLabel lbProduto;
     private javax.swing.JLabel lbProduto1;
+    private javax.swing.JLabel lbProduto2;
+    private javax.swing.JLabel lbProduto5;
+    private javax.swing.JLabel lbStatus;
+    private javax.swing.JLabel lbTempoUso;
     private javax.swing.JLabel lbUsuario;
     private javax.swing.JTextField txtBuscarProduto;
-    private javax.swing.JTextArea txtCondicao;
-    private javax.swing.JTextArea txtDescricao;
     // End of variables declaration//GEN-END:variables
 }
