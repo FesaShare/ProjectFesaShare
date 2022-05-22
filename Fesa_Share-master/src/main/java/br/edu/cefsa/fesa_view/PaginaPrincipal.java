@@ -4,10 +4,13 @@
  */
 package br.edu.cefsa.fesa_view;
 
+import br.edu.cefsa.fesa_share.dao.ProdutoDAO;
 import br.edu.cefsa.fesa_share.exception.PersistenciaException;
+import br.edu.cefsa.fesa_share.models.Produto;
 import br.edu.cefsa.fesa_share.models.Usuario;
 import br.edu.cefsa.fesa_share.util.DadosEstaticos;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -80,7 +83,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1050, 750));
         setResizable(false);
 
         bgPanel.setBackground(new java.awt.Color(40, 40, 40));
@@ -101,12 +103,22 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(60, 60, 60));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(220, 220, 220));
-        jButton1.setText("Esporte e Lazer");
+        jButton1.setText("Lazer");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(60, 60, 60));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(220, 220, 220));
         jButton2.setText("Eletrônicos");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -117,11 +129,21 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(220, 220, 220));
         jButton3.setText("Livros");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(60, 60, 60));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setForeground(new java.awt.Color(220, 220, 220));
         jButton4.setText("Instrumentos Musicais");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jLabel8.setBackground(new java.awt.Color(187, 187, 187));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -323,6 +345,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jButton20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton20.setForeground(new java.awt.Color(220, 220, 220));
         jButton20.setText("Publicações");
+        jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton20MouseClicked(evt);
+            }
+        });
         jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton20ActionPerformed(evt);
@@ -785,6 +812,30 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         Historico pgHis = new Historico();
         pgHis.setVisible(true);
     }//GEN-LAST:event_jButton22ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        Publicacoes pgPublic = new Publicacoes(3);
+        pgPublic.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton20MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        Publicacoes pgPublic = new Publicacoes(1);
+        pgPublic.setVisible(true);  // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        Publicacoes pgPublic = new Publicacoes(5);
+        pgPublic.setVisible(true); // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        Publicacoes pgPublic = new Publicacoes(6);
+        pgPublic.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments

@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author lasou
  */
-public class Publicacoes extends javax.swing.JFrame {
+public final class Publicacoes extends javax.swing.JFrame {
     
     boolean meusProdutos = false;
     int produtoAtual = 0;
@@ -30,7 +30,39 @@ public class Publicacoes extends javax.swing.JFrame {
 
     /**
      * Creates new form Publicacoes
+     * @param cat
      */
+    
+    public Publicacoes(int cat) {
+        initComponents();
+        carregaListaProdutosCategoria(cat);
+        
+        if(lista.isEmpty())
+        {
+            carregaListaProdutosCategoria(cat);
+        }
+        
+        if(meusProdutos)
+        {
+            btnAltera1.setVisible(true);
+            btnAltera2.setVisible(true);
+            btnAltera3.setVisible(true);
+            btnExclui1.setVisible(true);
+            btnExclui2.setVisible(true);
+            btnExclui3.setVisible(true);
+        }
+        else
+        {
+            btnAltera1.setVisible(false);
+            btnAltera2.setVisible(false);
+            btnAltera3.setVisible(false);
+            btnExclui1.setVisible(false);
+            btnExclui2.setVisible(false);
+            btnExclui3.setVisible(false);
+        }
+ 
+    }
+    
     public Publicacoes() {
         initComponents();
         
@@ -89,6 +121,23 @@ public class Publicacoes extends javax.swing.JFrame {
         }
     }
     
+    
+    public void carregaListaProdutosCategoria(int cat)
+    {
+        try {
+            
+            lista.clear();
+            lista = prodDAO.listarPorCategoria(cat);
+            //lbTeste.setText("Sem filtro");
+            txtPub.setText("Todas as publicações");
+            atualizaDadosListaProdutos();
+
+            lbQtdProdutos.setText(Integer.toString(lista.size()));
+               
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(Publicacoes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public void atualizaDadosListaProdutos()
     {
@@ -694,10 +743,11 @@ public class Publicacoes extends javax.swing.JFrame {
                                 .addComponent(lbProduto4))
                             .addComponent(jButton33))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(prod1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbDescricao1)
-                            .addComponent(lbProduto5)
-                            .addComponent(btnAltera1))
+                        .addGroup(prod1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAltera1)
+                            .addGroup(prod1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbDescricao1)
+                                .addComponent(lbProduto5)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(prod1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbCondicao1)

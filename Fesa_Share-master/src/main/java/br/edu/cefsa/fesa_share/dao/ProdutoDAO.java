@@ -290,4 +290,42 @@ public class ProdutoDAO implements GenericoDAO<Produto>{
         }
         return produtos;
     }
+    
+    public List<Produto> listarPorCategoria(int cat) throws PersistenciaException {
+        List<Produto> produtos = new ArrayList();
+        String sql = "SELECT * FROM FESASHARE.DBO.PRODUTO WHERE CategoriaID = ?";
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setInt(1, cat);
+            ResultSet result = pStatement.executeQuery();
+            while (result.next()) {
+                produtos.add(new Produto(result.getInt("ProdutoID"), 
+                                            result.getInt("UsuarioID"),
+                                            result.getInt("CategoriaID"),
+                                            result.getDouble("PrecoTotal"),
+                                            result.getString("Condicao"),
+                                            result.getString("Titulo"),
+                                            result.getString("Descricao"),
+                                            result.getString("AluguelStatus"),
+                                            result.getInt("ImagemID"),
+                                            result.getString("Detalhes"),
+                                            result.getInt("TempoUso")));
+            }
+            //-------------Inserir para datas---------------------//
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return produtos;
+    }
 }
