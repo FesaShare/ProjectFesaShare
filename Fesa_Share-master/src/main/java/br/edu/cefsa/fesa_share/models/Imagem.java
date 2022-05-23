@@ -14,7 +14,7 @@ import java.util.Arrays;
  */
 public class Imagem implements Serializable {
 
-    private Long codigo;
+    private Integer codigo;
     private String nome;
     private byte[] conteudo;
     private String caminho;
@@ -22,7 +22,11 @@ public class Imagem implements Serializable {
     public Imagem(long aLong, String string, byte[] bytes, String caminho) {
         
     }
-
+    
+     public void setCodigo(int id) {
+        this.codigo = id;
+    }
+     
     public String getCaminho() {
         return caminho;
     }
@@ -40,7 +44,7 @@ public class Imagem implements Serializable {
         this.conteudo = conteudo;
     }
 
-    public Long getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 

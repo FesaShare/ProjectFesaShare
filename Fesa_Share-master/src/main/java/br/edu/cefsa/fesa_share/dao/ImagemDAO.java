@@ -67,9 +67,8 @@ public class ImagemDAO implements GenericoDAO<Imagem> {
             connection = Conexao.getInstance().getConnection();
             PreparedStatement pStatement = connection.prepareStatement(sql);
             pStatement.setString(1, imagem.getNome());
-            pStatement.setBinaryStream(2, fis);
-            pStatement.setString(1, imagem.getCaminho());
-            System.out.println("Estou aqui2");
+            pStatement.setBytes(2, imagem.getConteudo());
+            pStatement.setString(3, imagem.getCaminho());
             pStatement.execute();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ImagemDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -206,6 +205,41 @@ public class ImagemDAO implements GenericoDAO<Imagem> {
             Logger.getLogger(ImagemDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return retorno;
+    }
+    
+    public Imagem buscar(Integer id) throws PersistenciaException {
+        String sql = "SELECT * FROM dbo.Imagem WHERE ImagemID = ?";
+        Imagem imagem = null;
+        Connection connection = null;
+        try {
+            connection = Conexao.getInstance().getConnection();
+            PreparedStatement pStatement = connection.prepareStatement(sql);
+            pStatement.setInt(1, id);
+            ResultSet result = pStatement.executeQuery();
+            if (result.next()) {
+                imagem = new Imagem();
+                imagem.setCodigo(result.getInt("ImagemID"));
+                imagem.setNome(result.getString("Titulo"));
+                imagem.setConteudo(result.getBytes("Conteudo"));
+                imagem.setCaminho(result.getString("Caminho"));
+                //Blob blob = result.getBlob("Caminho");
+                //imagem.setConteudo(blob.getBytes(1, (int) blob.length()));
+                //blob.free();
+            } else {
+                imagem = null;
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ImagemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ImagemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ImagemDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return imagem;
     }
     
 //    public static void main(String[] args) throws PersistenciaException {

@@ -18,6 +18,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Set;
@@ -39,6 +40,8 @@ public class NovaPublicacao extends javax.swing.JFrame {
      */
 
     String caminho;
+    byte[] image = null;
+    
     public NovaPublicacao() {
         initComponents();
         
@@ -280,16 +283,17 @@ public class NovaPublicacao extends javax.swing.JFrame {
 
     private void jButtonAddImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddImagemActionPerformed
         JFileChooser arquivo =  new JFileChooser();
+        
         arquivo.setDialogTitle("Selecione uma imagem");
         arquivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
         
         int opc = arquivo.showOpenDialog(this);
         if(opc == JFileChooser.APPROVE_OPTION){
-            File file = new File("caminho");
-            file = arquivo.getSelectedFile(); // Recebe o caminho
-            String filename = file.getAbsolutePath();
-            this.caminho = filename;
-            jTextFieldPath.setText(filename);
+            //File file = new File("caminho");
+            File file = arquivo.getSelectedFile(); // Recebe o caminho
+            //String filename = file.getAbsolutePath();
+            caminho = file.getAbsolutePath();
+            jTextFieldPath.setText(caminho);
             
             ImageIcon imagem = new ImageIcon(arquivo.getSelectedFile().getPath());
             
@@ -300,8 +304,18 @@ public class NovaPublicacao extends javax.swing.JFrame {
     private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
         try{
             
+            File image = new File(caminho);
+            FileInputStream fis  = new FileInputStream(image);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            byte[] buf = new byte[1024];
+            for(int readNum;(readNum=fis.read(buf))!=-1;){
+                bos.write(buf,0,readNum);
+            }
+            
             Imagem img = new Imagem();
-            img.setCaminho(this.caminho);
+            img.setConteudo(bos.toByteArray());
+            
+            img.setCaminho(caminho);
             img.setNome("Nova");
             
             
